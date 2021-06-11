@@ -1,11 +1,14 @@
 import { Config } from '@stencil/core';
+//import { windicssStencil } from '@codeperate/stencil-windicss';
 import { windicssStencil } from '@codeperate/stencil-windicss';
 export const config: Config = {
   namespace: 'cdp-ui-component',
   globalScript: 'src/global/app.ts',
   globalStyle: 'src/global/app.css',
   taskQueue: 'async',
-  plugins: [...windicssStencil()],
+  plugins: [...windicssStencil({
+    preflight:true
+  })],
   outputTargets: [
     {
       type: 'dist',

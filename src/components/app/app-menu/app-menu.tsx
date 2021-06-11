@@ -9,7 +9,7 @@ export class AppMenu {
   render() {
     return (
       <Host>
-
+        <a></a>
       </Host>
     );
   }
