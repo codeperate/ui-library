@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { CdpMenuConfig } from "./components/cdp/cdp-menu.interface";
+import { CdpMenuConfig, CdpMenuProps } from "./components/cdp/cdp-menu.interface";
 export namespace Components {
     interface AppMenu {
     }
@@ -13,6 +13,7 @@ export namespace Components {
     }
     interface CdpMenu {
         "config": CdpMenuConfig;
+        "props": CdpMenuProps;
     }
 }
 declare global {
@@ -47,6 +48,7 @@ declare namespace LocalJSX {
     }
     interface CdpMenu {
         "config"?: CdpMenuConfig;
+        "props"?: CdpMenuProps;
     }
     interface IntrinsicElements {
         "app-menu": AppMenu;

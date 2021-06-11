@@ -2,7 +2,7 @@ export interface ComMenuProps {
   display?: boolean;
 }
 export interface CdpMenuConfig {
-  menuWidth?: string;
+  width?: string
   initialDisplay?: boolean;
   breakPoint?: string | 'sm' | 'md' | 'lg' | 'xl';
   collapsible?: boolean;
@@ -18,4 +18,7 @@ export interface CdpMenuConfig {
     /** @default "fixed w-screen h-screen bg-black bg-opacity-50" */
     background?: string;
   };
+}
+export interface CdpMenuProps {
+  display?: boolean
 }

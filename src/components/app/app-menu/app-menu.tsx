@@ -9,7 +9,9 @@ export class AppMenu {
   render() {
     return (
       <Host>
-        <a></a>
+        <cdp-menu config={{ width: "260px" }}>
+          Testing123
+        </cdp-menu>
       </Host>
     );
   }
