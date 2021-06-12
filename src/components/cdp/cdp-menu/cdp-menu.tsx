@@ -1,5 +1,5 @@
 import { Component, Element, h, Host, Listen, Prop, State, Watch } from '@stencil/core';
-import { deepMerge } from '../../utils/deepmerge';
+import { deepAssign } from '../../../utils/deep-assign';
 import { CdpMenuConfig, CdpMenuProps } from './cdp-menu.interface';
 
 @Component({
@@ -11,15 +11,12 @@ export class CdpMenu {
   @Prop() config: CdpMenuConfig;
   @State() _config: CdpMenuConfig;
   defaultConfig: CdpMenuConfig = {
-    width: "auto",
-    initialDisplay: false,
-    collapsible: true,
-    collapse: false,
     sensitivity: 0.5,
+    background: true,
     classList: {
       host: 'h-full block relative',
-      container: '<md:transition-transform <md:translate-x-[-100%] transform sticky h-screen w-full grid top-0 overflow-y-auto p-2',
-      background: '<md:fixed hidden w-screen h-screen bg-black bg-opacity-50',
+      container: '<md:transition-transform <md:translate-x-[-100%] transform sticky h-screen w-full top-0 overflow-y-auto',
+      background: '<md:fixed md:hidden w-screen h-screen bg-black bg-opacity-50',
     },
   };
   @Prop({ mutable: true }) props: CdpMenuProps = {
@@ -48,9 +45,11 @@ export class CdpMenu {
   }
   @Watch('props')
   configChangeHandler(n: CdpMenuProps) {
-    if (n.display) this.translateX = 100;
-    if (!n.display) this.translateX = 0;
-    this.setTranslateX();
+    if (n.display) {
+      this.translateX = 100;
+      this.setTranslateX()
+    }
+    if (!n.display) this.removeTranslateX()
   }
   open() {
     this.props = { ...this.props, display: true };
@@ -61,6 +60,9 @@ export class CdpMenu {
   setTranslateX() {
     if (this.containerEl) this.containerEl.style.transform = `translateX(${this.translateX - 100}%)`;
   }
+  removeTranslateX() {
+    if (this.containerEl) this.containerEl.style.transform = null;
+  }
   moveHandler = (e: TouchEvent) => {
     if (e instanceof TouchEvent) this.finalXPos = e.touches[0].clientX;
     this.offsetX = (this.finalXPos - this.initXPos) * this._config.sensitivity;
@@ -70,21 +72,19 @@ export class CdpMenu {
     this.setTranslateX();
   };
   componentWillLoad() {
-    this._config = deepMerge(this.config, this.defaultConfig);
+    this._config = deepAssign(this.config, this.defaultConfig);
   }
 
   render() {
-    const { classList, width } = this._config;
+    const { classList, width, background } = this._config;
+    const { display } = this.props;
     return (
       <Host class={`${classList.host}`}>
-        <div
-          class={`${classList.background}`}
-          onClick={() => this.close()}
-        ></div>
-        <div ref={(el) => (this.containerEl = el)} class={`${classList.container}`} style={{ width: width }}>
+        {display && background ? <div class={`${classList.background}`} onClick={() => this.close()}></div> : ""}
+        <div ref={(el) => (this.containerEl = el)} class={`${classList.container}`} style={width ? { width: width } : {}}>
           <slot></slot>
         </div>
-      </Host >
+      </Host>
     );
   }
 }

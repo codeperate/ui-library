@@ -5,7 +5,8 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { CdpMenuConfig, CdpMenuProps } from "./components/cdp/cdp-menu.interface";
+import { CdpMenuConfig, CdpMenuProps } from "./components/cdp/cdp-menu/cdp-menu.interface";
+import { CdpMenuListConfig } from "./components/cdp/cdp-menu-list/cdp-menu-list.interface";
 export namespace Components {
     interface AppMenu {
     }
@@ -14,6 +15,9 @@ export namespace Components {
     interface CdpMenu {
         "config": CdpMenuConfig;
         "props": CdpMenuProps;
+    }
+    interface CdpMenuList {
+        "config": CdpMenuListConfig;
     }
 }
 declare global {
@@ -35,10 +39,17 @@ declare global {
         prototype: HTMLCdpMenuElement;
         new (): HTMLCdpMenuElement;
     };
+    interface HTMLCdpMenuListElement extends Components.CdpMenuList, HTMLStencilElement {
+    }
+    var HTMLCdpMenuListElement: {
+        prototype: HTMLCdpMenuListElement;
+        new (): HTMLCdpMenuListElement;
+    };
     interface HTMLElementTagNameMap {
         "app-menu": HTMLAppMenuElement;
         "app-root": HTMLAppRootElement;
         "cdp-menu": HTMLCdpMenuElement;
+        "cdp-menu-list": HTMLCdpMenuListElement;
     }
 }
 declare namespace LocalJSX {
@@ -50,10 +61,14 @@ declare namespace LocalJSX {
         "config"?: CdpMenuConfig;
         "props"?: CdpMenuProps;
     }
+    interface CdpMenuList {
+        "config": CdpMenuListConfig;
+    }
     interface IntrinsicElements {
         "app-menu": AppMenu;
         "app-root": AppRoot;
         "cdp-menu": CdpMenu;
+        "cdp-menu-list": CdpMenuList;
     }
 }
 export { LocalJSX as JSX };
@@ -63,6 +78,7 @@ declare module "@stencil/core" {
             "app-menu": LocalJSX.AppMenu & JSXBase.HTMLAttributes<HTMLAppMenuElement>;
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
             "cdp-menu": LocalJSX.CdpMenu & JSXBase.HTMLAttributes<HTMLCdpMenuElement>;
+            "cdp-menu-list": LocalJSX.CdpMenuList & JSXBase.HTMLAttributes<HTMLCdpMenuListElement>;
         }
     }
 }

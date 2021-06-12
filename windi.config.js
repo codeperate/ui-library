@@ -9,5 +9,8 @@ module.exports = {
         extensions: ['tsx'],
       },
     ],
-  }
+  },
+  plugins: [
+    require('@windicss/plugin-icons')
+  ]
 };
