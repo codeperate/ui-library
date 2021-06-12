@@ -12,14 +12,18 @@ export const config: Config = {
 	],
 	outputTargets: [
 		{
+			type: 'dist',
+			esmLoaderPath: '../loader',
+		},
+		{
+			type: 'dist-custom-elements-bundle',
+		},
+		{
+			type: 'docs-readme',
+		},
+		{
 			type: 'www',
-			serviceWorker: null,
-			copy: [
-				{
-					src: '../node_modules/@fortawesome/fontawesome-free/webfonts',
-					dest: 'webfonts',
-				},
-			],
+			serviceWorker: null, // disable service workers
 		},
 	],
 };

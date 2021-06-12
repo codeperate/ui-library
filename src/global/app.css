@@ -1,4 +1,27 @@
+@import '../../node_modules/@fortawesome/fontawesome-free/css/all.css';
 html,
 body {
-  width: 100%;
+	@apply w-full min-h-full;
+	font-family: '微軟正黑體';
+}
+*::-webkit-scrollbar {
+	width: 3px;
+}
+
+/* Track */
+*::-webkit-scrollbar-track {
+	background: #f1f1f1;
+}
+
+/* Handle */
+*::-webkit-scrollbar-thumb {
+	background: #888;
+}
+
+/* Handle on hover */
+*::-webkit-scrollbar-thumb:hover {
+	background: #555;
+}
+* {
+	scrollbar-width: thin;
 }

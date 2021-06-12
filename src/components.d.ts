@@ -5,12 +5,18 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { CdpAccordionConfig, CdpAccordionProps } from "./components/cdp/cdp-accordion/cdp-accordion.interface";
 import { CdpMenuConfig, CdpMenuProps } from "./components/cdp/cdp-menu/cdp-menu.interface";
 import { CdpMenuListConfig } from "./components/cdp/cdp-menu-list/cdp-menu-list.interface";
 export namespace Components {
     interface AppMenu {
     }
     interface AppRoot {
+    }
+    interface CdpAccordion {
+        "config": CdpAccordionConfig;
+        "open": () => Promise<void>;
+        "props": CdpAccordionProps;
     }
     interface CdpMenu {
         "config": CdpMenuConfig;
@@ -33,6 +39,12 @@ declare global {
         prototype: HTMLAppRootElement;
         new (): HTMLAppRootElement;
     };
+    interface HTMLCdpAccordionElement extends Components.CdpAccordion, HTMLStencilElement {
+    }
+    var HTMLCdpAccordionElement: {
+        prototype: HTMLCdpAccordionElement;
+        new (): HTMLCdpAccordionElement;
+    };
     interface HTMLCdpMenuElement extends Components.CdpMenu, HTMLStencilElement {
     }
     var HTMLCdpMenuElement: {
@@ -48,6 +60,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "app-menu": HTMLAppMenuElement;
         "app-root": HTMLAppRootElement;
+        "cdp-accordion": HTMLCdpAccordionElement;
         "cdp-menu": HTMLCdpMenuElement;
         "cdp-menu-list": HTMLCdpMenuListElement;
     }
@@ -56,6 +69,10 @@ declare namespace LocalJSX {
     interface AppMenu {
     }
     interface AppRoot {
+    }
+    interface CdpAccordion {
+        "config"?: CdpAccordionConfig;
+        "props"?: CdpAccordionProps;
     }
     interface CdpMenu {
         "config"?: CdpMenuConfig;
@@ -67,6 +84,7 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "app-menu": AppMenu;
         "app-root": AppRoot;
+        "cdp-accordion": CdpAccordion;
         "cdp-menu": CdpMenu;
         "cdp-menu-list": CdpMenuList;
     }
@@ -77,6 +95,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "app-menu": LocalJSX.AppMenu & JSXBase.HTMLAttributes<HTMLAppMenuElement>;
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
+            "cdp-accordion": LocalJSX.CdpAccordion & JSXBase.HTMLAttributes<HTMLCdpAccordionElement>;
             "cdp-menu": LocalJSX.CdpMenu & JSXBase.HTMLAttributes<HTMLCdpMenuElement>;
             "cdp-menu-list": LocalJSX.CdpMenuList & JSXBase.HTMLAttributes<HTMLCdpMenuListElement>;
         }
