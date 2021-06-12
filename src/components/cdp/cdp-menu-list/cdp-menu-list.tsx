@@ -10,8 +10,8 @@ export class CdpMenuList {
         anchorPropsFn: null,
         classList: {
             host: "grid grid-cols-1 auto-rows-min",
-            menuItem: "w-full p-2 hover:bg-blue-500 hover:text-white rounded-md grid",
-            menuItemActive: "bg-blue-500 text-white active",
+            menuItem: "py-2 px-4 hover:bg-light-blue-600 hover:text-white rounded-md grid grid-cols-[max-content,1fr,max-content] items-center gap-4",
+            menuItemActive: "py-2 px-4 bg-light-blue-600 text-white rounded-md grid grid-cols-[max-content,1fr,max-content] items-center gap-4",
             subMenuItem: "w-full flex p-1 hover:bg-blue-500 hover:text-white items-center justify-start rounded-md",
             subMenuItemActive: "bg-blue-500 text-white active",
             subMenuItemIcon: "w-8"
@@ -30,7 +30,7 @@ export class CdpMenuList {
             <Host class={classList.host}>
                 {menuItems.map(({ href, name, isActive, icon, indicator }) => {
                     let active = isActive ? isActive(activePath) : activePath.startsWith(href);
-                    return <a {...anchorPropsFn(href)} class={active ? classList.menuItem : classList.menuItemActive}>
+                    return <a {...anchorPropsFn(href)} class={active ? classList.menuItemActive : classList.menuItem}>
                         {icon ? icon(active) : ""}{name}{indicator ? indicator(active) : ""}
                     </a>
                 })}
