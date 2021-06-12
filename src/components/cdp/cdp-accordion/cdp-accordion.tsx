@@ -1,4 +1,5 @@
-import { Component, Element, h, Host, Method, Prop, State } from '@stencil/core';
+import { Component, Element, h, Host, Prop, State } from '@stencil/core';
+import { deepAssign } from '../../../utils/deep-assign';
 import { CdpAccordionConfig, CdpAccordionProps } from './cdp-accordion.interface';
 
 
@@ -9,37 +10,30 @@ export class CdpAccordion {
     @Element() rootEl: HTMLCdpAccordionElement;
     @Prop({ mutable: true }) props: CdpAccordionProps = { display: false };
     @Prop() config: CdpAccordionConfig
-    @State() contentHeight: string = "0"
-    contentEl: HTMLDivElement;
-    @Method() async open() {
-        if (this.contentEl) {
-            let height = 0;
-            for (let i = 0; i < this.contentEl.children.length; i++) {
-                const el = this.contentEl.children[i] as HTMLElement
-                const style = getComputedStyle(el)
-                height += (parseFloat(style.marginTop) || 0)
-                height += el.offsetHeight;
-                height += (parseFloat(style.marginBottom) || 0)
-            }
-            this.contentHeight = height + "px";
-            this.props = { ...this.props, display: true };
-        }
+    @State() _config: CdpAccordionConfig
+    defaultConfig: CdpAccordionConfig = {
+        classList: {
+            content: "transition-all duration-500 ease-in-out overflow-hidden",
+            expanded: "expanded"
+        },
+        maxHeight: "100vh"
     }
-    close() {
-        this.contentHeight = "0";
-        this.props = { ...this.props, display: false };
+    contentEl: HTMLDivElement;
+    toggle() {
+        this.props = { ...this.props, display: !this.props.display };
     }
     componentWillLoad() {
-        if (this.props.display)
-            this.contentHeight = "auto"
+        this._config = deepAssign(this.config, this.defaultConfig)
     }
     render() {
-        //const { display } = this.props
-        return <Host class="">
-            <div>
+        const { classList, maxHeight } = this._config;
+        const { display } = this.props;
+        const hostClass = display ? classList.expanded : "";
+        return <Host class={hostClass}>
+            <div onClick={() => this.toggle()}>
                 <slot name="accordion"></slot>
             </div>
-            <div>
+            <div ref={(el) => this.contentEl = el} class={classList.content} style={{ maxHeight: display ? maxHeight : "0" }}>
                 <slot></slot>
             </div>
         </Host>

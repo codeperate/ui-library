@@ -13,8 +13,7 @@ export class CdpMenuList {
             menuItem: "py-2 px-4 hover:bg-light-blue-600 hover:text-white rounded-md grid grid-cols-[max-content,1fr,max-content] items-center gap-4",
             menuItemActive: "py-2 px-4 bg-light-blue-600 text-white rounded-md grid grid-cols-[max-content,1fr,max-content] items-center gap-4",
             subMenuItem: "w-full flex p-1 hover:bg-blue-500 hover:text-white items-center justify-start rounded-md",
-            subMenuItemActive: "bg-blue-500 text-white active",
-            subMenuItemIcon: "w-8"
+            subMenuItemActive: "bg-blue-500 text-white active"
         }
     }
     @Element() rootEl: HTMLCdpMenuListElement

@@ -25,6 +25,7 @@
     "@codeperate/stencil-windicss": "^2.1.0",
     "@fortawesome/fontawesome-free": "^5.15.3",
     "@stencil/core": "^2.0.1",
+    "stencil-router-v2": "^0.6.0",
     "windicss": "^3.1.3"
   },
   "license": "MIT",

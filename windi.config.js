@@ -1,3 +1,5 @@
+const plugin = require('windicss/plugin')
+
 module.exports = {
   extract: {
     extractors: [
@@ -11,5 +13,12 @@ module.exports = {
     ],
   },
   plugins: [
+    plugin(function ({ addVariant }) {
+      addVariant('expanded', ({ modifySelectors }) =>
+        modifySelectors(({ className }) =>
+          `.expanded .${className}`
+        )
+      )
+    })
   ]
 };

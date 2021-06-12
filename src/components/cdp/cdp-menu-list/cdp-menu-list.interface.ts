@@ -22,8 +22,6 @@ export interface CdpMenuListConfig {
 		subMenuItem?: string;
 		/** @default "bg-blue-500 text-white active" */
 		subMenuItemActive?: string;
-		/** @default "w-8" */
-		subMenuItemIcon?: string;
 		/** @default "" */
 		host?: string;
 	};

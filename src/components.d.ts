@@ -13,9 +13,10 @@ export namespace Components {
     }
     interface AppRoot {
     }
+    interface AppRoute {
+    }
     interface CdpAccordion {
         "config": CdpAccordionConfig;
-        "open": () => Promise<void>;
         "props": CdpAccordionProps;
     }
     interface CdpMenu {
@@ -24,6 +25,8 @@ export namespace Components {
     }
     interface CdpMenuList {
         "config": CdpMenuListConfig;
+    }
+    interface PageHome {
     }
 }
 declare global {
@@ -38,6 +41,12 @@ declare global {
     var HTMLAppRootElement: {
         prototype: HTMLAppRootElement;
         new (): HTMLAppRootElement;
+    };
+    interface HTMLAppRouteElement extends Components.AppRoute, HTMLStencilElement {
+    }
+    var HTMLAppRouteElement: {
+        prototype: HTMLAppRouteElement;
+        new (): HTMLAppRouteElement;
     };
     interface HTMLCdpAccordionElement extends Components.CdpAccordion, HTMLStencilElement {
     }
@@ -57,18 +66,28 @@ declare global {
         prototype: HTMLCdpMenuListElement;
         new (): HTMLCdpMenuListElement;
     };
+    interface HTMLPageHomeElement extends Components.PageHome, HTMLStencilElement {
+    }
+    var HTMLPageHomeElement: {
+        prototype: HTMLPageHomeElement;
+        new (): HTMLPageHomeElement;
+    };
     interface HTMLElementTagNameMap {
         "app-menu": HTMLAppMenuElement;
         "app-root": HTMLAppRootElement;
+        "app-route": HTMLAppRouteElement;
         "cdp-accordion": HTMLCdpAccordionElement;
         "cdp-menu": HTMLCdpMenuElement;
         "cdp-menu-list": HTMLCdpMenuListElement;
+        "page-home": HTMLPageHomeElement;
     }
 }
 declare namespace LocalJSX {
     interface AppMenu {
     }
     interface AppRoot {
+    }
+    interface AppRoute {
     }
     interface CdpAccordion {
         "config"?: CdpAccordionConfig;
@@ -81,12 +100,16 @@ declare namespace LocalJSX {
     interface CdpMenuList {
         "config": CdpMenuListConfig;
     }
+    interface PageHome {
+    }
     interface IntrinsicElements {
         "app-menu": AppMenu;
         "app-root": AppRoot;
+        "app-route": AppRoute;
         "cdp-accordion": CdpAccordion;
         "cdp-menu": CdpMenu;
         "cdp-menu-list": CdpMenuList;
+        "page-home": PageHome;
     }
 }
 export { LocalJSX as JSX };
@@ -95,9 +118,11 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "app-menu": LocalJSX.AppMenu & JSXBase.HTMLAttributes<HTMLAppMenuElement>;
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
+            "app-route": LocalJSX.AppRoute & JSXBase.HTMLAttributes<HTMLAppRouteElement>;
             "cdp-accordion": LocalJSX.CdpAccordion & JSXBase.HTMLAttributes<HTMLCdpAccordionElement>;
             "cdp-menu": LocalJSX.CdpMenu & JSXBase.HTMLAttributes<HTMLCdpMenuElement>;
             "cdp-menu-list": LocalJSX.CdpMenuList & JSXBase.HTMLAttributes<HTMLCdpMenuListElement>;
+            "page-home": LocalJSX.PageHome & JSXBase.HTMLAttributes<HTMLPageHomeElement>;
         }
     }
 }
