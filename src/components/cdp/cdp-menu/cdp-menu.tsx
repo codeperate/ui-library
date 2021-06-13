@@ -14,7 +14,7 @@ export class CdpMenu {
     sensitivity: 0.5,
     background: true,
     classList: {
-      host: 'h-full block relative',
+      host: 'h-full block relative <md:w-0',
       container: '<md:transition-transform <md:translate-x-[-100%] transform sticky h-screen w-full top-0 overflow-y-auto',
       background: '<md:fixed md:hidden w-screen h-screen bg-black bg-opacity-50',
     },

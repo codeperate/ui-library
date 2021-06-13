@@ -7,7 +7,8 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { CdpAccordionConfig, CdpAccordionProps } from "./components/cdp/cdp-accordion/cdp-accordion.interface";
 import { CdpMenuConfig, CdpMenuProps } from "./components/cdp/cdp-menu/cdp-menu.interface";
-import { CdpMenuListConfig } from "./components/cdp/cdp-menu-list/cdp-menu-list.interface";
+import { CdpMenuListConfig, CdpMenuListProps } from "./components/cdp/cdp-menu-list/cdp-menu-list.interface";
+import { CdpModalConfig, CdpModalProps } from "./components/cdp/cdp-modal/cdp-modal.interface";
 export namespace Components {
     interface AppMenu {
     }
@@ -25,8 +26,15 @@ export namespace Components {
     }
     interface CdpMenuList {
         "config": CdpMenuListConfig;
+        "props": CdpMenuListProps;
+    }
+    interface CdpModal {
+        "config": CdpModalConfig;
+        "props": CdpModalProps;
     }
     interface PageHome {
+    }
+    interface PageMenu {
     }
 }
 declare global {
@@ -66,11 +74,23 @@ declare global {
         prototype: HTMLCdpMenuListElement;
         new (): HTMLCdpMenuListElement;
     };
+    interface HTMLCdpModalElement extends Components.CdpModal, HTMLStencilElement {
+    }
+    var HTMLCdpModalElement: {
+        prototype: HTMLCdpModalElement;
+        new (): HTMLCdpModalElement;
+    };
     interface HTMLPageHomeElement extends Components.PageHome, HTMLStencilElement {
     }
     var HTMLPageHomeElement: {
         prototype: HTMLPageHomeElement;
         new (): HTMLPageHomeElement;
+    };
+    interface HTMLPageMenuElement extends Components.PageMenu, HTMLStencilElement {
+    }
+    var HTMLPageMenuElement: {
+        prototype: HTMLPageMenuElement;
+        new (): HTMLPageMenuElement;
     };
     interface HTMLElementTagNameMap {
         "app-menu": HTMLAppMenuElement;
@@ -79,7 +99,9 @@ declare global {
         "cdp-accordion": HTMLCdpAccordionElement;
         "cdp-menu": HTMLCdpMenuElement;
         "cdp-menu-list": HTMLCdpMenuListElement;
+        "cdp-modal": HTMLCdpModalElement;
         "page-home": HTMLPageHomeElement;
+        "page-menu": HTMLPageMenuElement;
     }
 }
 declare namespace LocalJSX {
@@ -99,8 +121,17 @@ declare namespace LocalJSX {
     }
     interface CdpMenuList {
         "config": CdpMenuListConfig;
+        "props": CdpMenuListProps;
+    }
+    interface CdpModal {
+        "config"?: CdpModalConfig;
+        "onClosed"?: (event: CustomEvent<any>) => void;
+        "onOpened"?: (event: CustomEvent<any>) => void;
+        "props"?: CdpModalProps;
     }
     interface PageHome {
+    }
+    interface PageMenu {
     }
     interface IntrinsicElements {
         "app-menu": AppMenu;
@@ -109,7 +140,9 @@ declare namespace LocalJSX {
         "cdp-accordion": CdpAccordion;
         "cdp-menu": CdpMenu;
         "cdp-menu-list": CdpMenuList;
+        "cdp-modal": CdpModal;
         "page-home": PageHome;
+        "page-menu": PageMenu;
     }
 }
 export { LocalJSX as JSX };
@@ -122,7 +155,9 @@ declare module "@stencil/core" {
             "cdp-accordion": LocalJSX.CdpAccordion & JSXBase.HTMLAttributes<HTMLCdpAccordionElement>;
             "cdp-menu": LocalJSX.CdpMenu & JSXBase.HTMLAttributes<HTMLCdpMenuElement>;
             "cdp-menu-list": LocalJSX.CdpMenuList & JSXBase.HTMLAttributes<HTMLCdpMenuListElement>;
+            "cdp-modal": LocalJSX.CdpModal & JSXBase.HTMLAttributes<HTMLCdpModalElement>;
             "page-home": LocalJSX.PageHome & JSXBase.HTMLAttributes<HTMLPageHomeElement>;
+            "page-menu": LocalJSX.PageMenu & JSXBase.HTMLAttributes<HTMLPageMenuElement>;
         }
     }
 }

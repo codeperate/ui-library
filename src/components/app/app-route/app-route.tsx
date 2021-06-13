@@ -13,6 +13,9 @@ export class AppRoute {
 		return (
 			<Host class="grid grid-cols-1 max-w-screen-xl mx-auto">
 				<Router.Switch>
+					<Route path={/^\/components\/cdp-menu/}>
+						<page-menu></page-menu>
+					</Route>
 					<Route path={/^\//}>
 						<page-home></page-home>
 					</Route>

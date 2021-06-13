@@ -13,7 +13,7 @@ export class CdpAccordion {
     @State() _config: CdpAccordionConfig
     defaultConfig: CdpAccordionConfig = {
         classList: {
-            content: "transition-all duration-500 ease-in-out overflow-hidden",
+            content: "transition-all duration-500 overflow-hidden",
             expanded: "expanded"
         },
         maxHeight: "100vh"

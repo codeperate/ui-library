@@ -15,6 +15,7 @@
     "loader/"
   ],
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "build": "stencil build --docs",
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
@@ -25,6 +26,7 @@
     "@codeperate/stencil-windicss": "^2.1.0",
     "@fortawesome/fontawesome-free": "^5.15.3",
     "@stencil/core": "^2.0.1",
+    "path-to-regexp": "^6.2.0",
     "stencil-router-v2": "^0.6.0",
     "windicss": "^3.1.3"
   },

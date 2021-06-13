@@ -1,7 +1,8 @@
-import { Component, Element, h, Host } from '@stencil/core';
+import { Component, Element, h, Host, State } from '@stencil/core';
 import { CdpMenuItem } from '../../cdp/cdp-menu-list/cdp-menu-list.interface';
 import { href as _href } from 'stencil-router-v2'
 import { router } from '../../../global/app';
+import { CdpMenuProps } from '../../cdp/cdp-menu/cdp-menu.interface';
 @Component({
   tag: 'app-menu',
 })
@@ -10,13 +11,40 @@ export class AppMenu {
   menuItem: CdpMenuItem[] = [{
     name: "Home",
     href: "/",
-    icon: () => <i class="fas fa-home"></i>
+    icon: () => <i class="fas fa-home"></i>,
+  },
+  {
+    name: "UI Components",
+    isActive: (path) => path.startsWith("/components"),
+    icon: () => <i class="far fa-object-ungroup"></i>,
+    indicator: () => <i class="fas fa-chevron-right expanded:transform expanded:rotate-90 transition-all"></i>,
+    nested: [
+      {
+        name: "Menu",
+        href: "/components/cdp-menu",
+      },
+      {
+        name: "Menu List",
+        href: "/components/cdp-menu-list"
+      },
+      {
+        name: "Accordion",
+        href: "/components/cdp-accordion"
+      }]
   }]
-  componentWillLoad() { }
+  @State() activePath = router.activePath;
+  componentWillLoad() {
+    router.onChange("activePath", (path) => {
+      this.activePath = path
+      this.menuProps = { display: false }
+    })
+  }
+  @State() menuProps: CdpMenuProps;
   render() {
+    const activePath = this.activePath;
     return (
       <Host>
-        <cdp-menu config={{ width: "260px" }}>
+        <cdp-menu config={{ width: "260px" }} props={this.menuProps}>
           <div class="grid auto-rows-min bg-white bg-opacity-80 h-full w-full p-4 gap-4 border-r">
             <div class="grid grid-cols-[40px,1fr,max-content] items-center gap-2 py-6">
               <img src="/assets/icon-color.svg"></img>
@@ -26,7 +54,9 @@ export class AppMenu {
             <cdp-menu-list config={{
               menuItems: this.menuItem,
               anchorPropsFn: (href) => (_href(href, router))
-            }}></cdp-menu-list>
+            }}
+              props={{ activePath }}
+            ></cdp-menu-list>
           </div>
         </cdp-menu>
       </Host>

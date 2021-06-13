@@ -15,7 +15,6 @@ export class AppRoot {
           <app-route></app-route>
           <app-modal></app-modal>
         </main>
-        <app-background class="z-0"></app-background>
       </Host>
     );
   }
