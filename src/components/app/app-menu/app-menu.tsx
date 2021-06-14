@@ -30,7 +30,12 @@ export class AppMenu {
       {
         name: "Accordion",
         href: "/components/cdp-accordion"
-      }]
+      },
+      {
+        name: "Modal",
+        href: "/components/cdp-modal"
+      }
+    ]
   }]
   @State() activePath = router.activePath;
   componentWillLoad() {

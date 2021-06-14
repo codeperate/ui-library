@@ -19,6 +19,10 @@ export const config: Config = {
 					src: '../node_modules/@fortawesome/fontawesome-free/webfonts',
 					dest: 'webfonts',
 				},
+				{
+					src: '../README.md',
+					dest: './README.md',
+				},
 			],
 		},
 	],
