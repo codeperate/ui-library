@@ -10,6 +10,7 @@
 - Design for css utilities. Style the components easily with your favourite class utilities framework e.g. [tailwind](https://tailwindcss.com/ 'tailwind') & [windicss](https://windicss.org/ 'windicss').
 - Highly customizable
 - Written in typescript
+- Style with windicss
 - Written in latest css standard (not even flexbox, just grid)
 
 ## Getting Started

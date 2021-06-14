@@ -5,11 +5,23 @@ body {
   @apply w-full min-h-full;
   font-family: 'Microsoft JhengHei UI';
 }
-ui-doc pre code {
+app-route > * {
+  @apply grid grid-cols-1 gap-4;
+}
+ui-doc pre {
   @apply bg-dark-200 text-white p-4 w-full rounded-lg block;
+}
+ui-doc pre code {
+  @apply overflow-x-auto max-w-full block;
 }
 h1 {
   @apply text-3xl border-b;
+}
+button {
+  @apply bg-light-blue-600 hover:bg-light-blue-700 p-3 rounded-lg text-white;
+}
+*:focus {
+  @apply outline-none ring !important;
 }
 ui-doc table {
   @apply border-collapse;
@@ -29,6 +41,7 @@ ui-doc p code {
 }
 *::-webkit-scrollbar {
   width: 3px;
+  height: 5px;
 }
 
 /* Track */

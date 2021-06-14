@@ -3,6 +3,7 @@ lockfileVersion: 5.3
 specifiers:
   '@codeperate/stencil-windicss': ^2.1.0
   '@fortawesome/fontawesome-free': ^5.15.3
+  '@popperjs/core': ^2.9.2
   '@stencil/core': ^2.0.1
   '@types/node': ^15.12.2
   '@windicss/plugin-icons': ^1.0.2
@@ -20,6 +21,7 @@ specifiers:
 dependencies:
   '@codeperate/stencil-windicss': 2.1.0_@stencil+core@2.6.0
   '@fortawesome/fontawesome-free': 5.15.3
+  '@popperjs/core': 2.9.2
   '@stencil/core': 2.6.0
   highlight.js: 11.0.1
   marked: 2.0.7
@@ -51,6 +53,10 @@ packages:
     resolution: {integrity: sha512-rFnSUN/QOtnOAgqFRooTA3H57JLDm0QEG/jPdk+tLQNL/eWd+Aok8g3qCI+Q1xuDPWpGW/i9JySpJVsq8Q0s9w==}
     engines: {node: '>=6'}
     requiresBuild: true
+    dev: false
+
+  /@popperjs/core/2.9.2:
+    resolution: {integrity: sha512-VZMYa7+fXHdwIq1TDhSXoVmSPEGM/aa+6Aiq3nVVJ9bXr24zScr+NlKFKC3iPljA7ho/GAZr+d2jOf5GIRC30Q==}
     dev: false
 
   /@stencil/core/2.6.0:

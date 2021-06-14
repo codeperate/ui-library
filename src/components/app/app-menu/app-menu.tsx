@@ -23,6 +23,7 @@ export class AppMenu {
     isActive: (path) => path.startsWith("/components"),
     icon: () => <i class="far fa-object-ungroup"></i>,
     indicator: () => <i class="fas fa-chevron-right expanded:transform expanded:rotate-90 transition-all"></i>,
+    expand: true,
     nested: [
       {
         name: "Menu",

@@ -9,6 +9,7 @@ import { CdpAccordionConfig, CdpAccordionProps } from "./components/cdp/cdp-acco
 import { CdpMenuConfig, CdpMenuProps } from "./components/cdp/cdp-menu/cdp-menu.interface";
 import { CdpMenuListConfig, CdpMenuListProps } from "./components/cdp/cdp-menu-list/cdp-menu-list.interface";
 import { CdpModalConfig, CdpModalProps } from "./components/cdp/cdp-modal/cdp-modal.interface";
+import { ComTooltipConfig } from "./components/cdp/cdp-tooltip/cdp-tooltip";
 export namespace Components {
     interface AppMenu {
     }
@@ -32,6 +33,11 @@ export namespace Components {
         "config": CdpModalConfig;
         "props": CdpModalProps;
     }
+    interface CdpTooltip {
+        "config": ComTooltipConfig;
+        "hide": () => Promise<void>;
+        "show": () => Promise<void>;
+    }
     interface PageAccordion {
     }
     interface PageChangeLog {
@@ -41,6 +47,8 @@ export namespace Components {
     interface PageMenu {
     }
     interface PageMenuList {
+    }
+    interface PageModal {
     }
     interface UiDoc {
         "url": string;
@@ -89,6 +97,12 @@ declare global {
         prototype: HTMLCdpModalElement;
         new (): HTMLCdpModalElement;
     };
+    interface HTMLCdpTooltipElement extends Components.CdpTooltip, HTMLStencilElement {
+    }
+    var HTMLCdpTooltipElement: {
+        prototype: HTMLCdpTooltipElement;
+        new (): HTMLCdpTooltipElement;
+    };
     interface HTMLPageAccordionElement extends Components.PageAccordion, HTMLStencilElement {
     }
     var HTMLPageAccordionElement: {
@@ -119,6 +133,12 @@ declare global {
         prototype: HTMLPageMenuListElement;
         new (): HTMLPageMenuListElement;
     };
+    interface HTMLPageModalElement extends Components.PageModal, HTMLStencilElement {
+    }
+    var HTMLPageModalElement: {
+        prototype: HTMLPageModalElement;
+        new (): HTMLPageModalElement;
+    };
     interface HTMLUiDocElement extends Components.UiDoc, HTMLStencilElement {
     }
     var HTMLUiDocElement: {
@@ -133,11 +153,13 @@ declare global {
         "cdp-menu": HTMLCdpMenuElement;
         "cdp-menu-list": HTMLCdpMenuListElement;
         "cdp-modal": HTMLCdpModalElement;
+        "cdp-tooltip": HTMLCdpTooltipElement;
         "page-accordion": HTMLPageAccordionElement;
         "page-change-log": HTMLPageChangeLogElement;
         "page-home": HTMLPageHomeElement;
         "page-menu": HTMLPageMenuElement;
         "page-menu-list": HTMLPageMenuListElement;
+        "page-modal": HTMLPageModalElement;
         "ui-doc": HTMLUiDocElement;
     }
 }
@@ -166,6 +188,9 @@ declare namespace LocalJSX {
         "onOpened"?: (event: CustomEvent<any>) => void;
         "props"?: CdpModalProps;
     }
+    interface CdpTooltip {
+        "config"?: ComTooltipConfig;
+    }
     interface PageAccordion {
     }
     interface PageChangeLog {
@@ -175,6 +200,8 @@ declare namespace LocalJSX {
     interface PageMenu {
     }
     interface PageMenuList {
+    }
+    interface PageModal {
     }
     interface UiDoc {
         "url": string;
@@ -187,11 +214,13 @@ declare namespace LocalJSX {
         "cdp-menu": CdpMenu;
         "cdp-menu-list": CdpMenuList;
         "cdp-modal": CdpModal;
+        "cdp-tooltip": CdpTooltip;
         "page-accordion": PageAccordion;
         "page-change-log": PageChangeLog;
         "page-home": PageHome;
         "page-menu": PageMenu;
         "page-menu-list": PageMenuList;
+        "page-modal": PageModal;
         "ui-doc": UiDoc;
     }
 }
@@ -206,11 +235,13 @@ declare module "@stencil/core" {
             "cdp-menu": LocalJSX.CdpMenu & JSXBase.HTMLAttributes<HTMLCdpMenuElement>;
             "cdp-menu-list": LocalJSX.CdpMenuList & JSXBase.HTMLAttributes<HTMLCdpMenuListElement>;
             "cdp-modal": LocalJSX.CdpModal & JSXBase.HTMLAttributes<HTMLCdpModalElement>;
+            "cdp-tooltip": LocalJSX.CdpTooltip & JSXBase.HTMLAttributes<HTMLCdpTooltipElement>;
             "page-accordion": LocalJSX.PageAccordion & JSXBase.HTMLAttributes<HTMLPageAccordionElement>;
             "page-change-log": LocalJSX.PageChangeLog & JSXBase.HTMLAttributes<HTMLPageChangeLogElement>;
             "page-home": LocalJSX.PageHome & JSXBase.HTMLAttributes<HTMLPageHomeElement>;
             "page-menu": LocalJSX.PageMenu & JSXBase.HTMLAttributes<HTMLPageMenuElement>;
             "page-menu-list": LocalJSX.PageMenuList & JSXBase.HTMLAttributes<HTMLPageMenuListElement>;
+            "page-modal": LocalJSX.PageModal & JSXBase.HTMLAttributes<HTMLPageModalElement>;
             "ui-doc": LocalJSX.UiDoc & JSXBase.HTMLAttributes<HTMLUiDocElement>;
         }
     }

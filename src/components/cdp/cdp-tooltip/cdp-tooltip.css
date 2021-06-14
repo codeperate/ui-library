@@ -1,0 +1,12 @@
+com-tooltip div[data-popper-placement^='top'] > #arrow {
+  bottom: -4px;
+}
+com-tooltip div[data-popper-placement^='bottom'] > #arrow {
+  top: -4px;
+}
+com-tooltip div[data-popper-placement^='left'] > #arrow {
+  right: -4px;
+}
+com-tooltip div[data-popper-placement^='right'] > #arrow {
+  left: -4px;
+}
