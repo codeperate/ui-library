@@ -18,4 +18,4 @@
 ```
 npm i @codeperate/ui-library
 ```
-Import it according to [stencil documentation](https://stenciljs.com/docs/overview)
+Depends on your frontend framework, import it according to [stencil documentation](https://stenciljs.com/docs/overview)
