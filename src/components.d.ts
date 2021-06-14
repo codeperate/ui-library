@@ -32,6 +32,8 @@ export namespace Components {
         "config": CdpModalConfig;
         "props": CdpModalProps;
     }
+    interface PageAccordion {
+    }
     interface PageChangeLog {
     }
     interface PageHome {
@@ -87,6 +89,12 @@ declare global {
         prototype: HTMLCdpModalElement;
         new (): HTMLCdpModalElement;
     };
+    interface HTMLPageAccordionElement extends Components.PageAccordion, HTMLStencilElement {
+    }
+    var HTMLPageAccordionElement: {
+        prototype: HTMLPageAccordionElement;
+        new (): HTMLPageAccordionElement;
+    };
     interface HTMLPageChangeLogElement extends Components.PageChangeLog, HTMLStencilElement {
     }
     var HTMLPageChangeLogElement: {
@@ -125,6 +133,7 @@ declare global {
         "cdp-menu": HTMLCdpMenuElement;
         "cdp-menu-list": HTMLCdpMenuListElement;
         "cdp-modal": HTMLCdpModalElement;
+        "page-accordion": HTMLPageAccordionElement;
         "page-change-log": HTMLPageChangeLogElement;
         "page-home": HTMLPageHomeElement;
         "page-menu": HTMLPageMenuElement;
@@ -157,6 +166,8 @@ declare namespace LocalJSX {
         "onOpened"?: (event: CustomEvent<any>) => void;
         "props"?: CdpModalProps;
     }
+    interface PageAccordion {
+    }
     interface PageChangeLog {
     }
     interface PageHome {
@@ -176,6 +187,7 @@ declare namespace LocalJSX {
         "cdp-menu": CdpMenu;
         "cdp-menu-list": CdpMenuList;
         "cdp-modal": CdpModal;
+        "page-accordion": PageAccordion;
         "page-change-log": PageChangeLog;
         "page-home": PageHome;
         "page-menu": PageMenu;
@@ -194,6 +206,7 @@ declare module "@stencil/core" {
             "cdp-menu": LocalJSX.CdpMenu & JSXBase.HTMLAttributes<HTMLCdpMenuElement>;
             "cdp-menu-list": LocalJSX.CdpMenuList & JSXBase.HTMLAttributes<HTMLCdpMenuListElement>;
             "cdp-modal": LocalJSX.CdpModal & JSXBase.HTMLAttributes<HTMLCdpModalElement>;
+            "page-accordion": LocalJSX.PageAccordion & JSXBase.HTMLAttributes<HTMLPageAccordionElement>;
             "page-change-log": LocalJSX.PageChangeLog & JSXBase.HTMLAttributes<HTMLPageChangeLogElement>;
             "page-home": LocalJSX.PageHome & JSXBase.HTMLAttributes<HTMLPageHomeElement>;
             "page-menu": LocalJSX.PageMenu & JSXBase.HTMLAttributes<HTMLPageMenuElement>;

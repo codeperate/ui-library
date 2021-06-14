@@ -55,7 +55,7 @@ export class AppMenu {
     return (
       <Host>
         <cdp-menu config={{ width: "260px" }} props={this.menuProps}>
-          <div class="grid auto-rows-min bg-white bg-opacity-80 h-full w-full p-4 gap-4 border-r">
+          <div class="grid auto-rows-min bg-white bg-opacity-90 h-full w-full p-4 gap-4 border-r">
             <div class="grid grid-cols-[40px,1fr,max-content] items-center gap-2 py-6">
               <img src="/assets/icon-color.svg"></img>
               <span class="text-2xl font-extrabold text-light-blue-700">Codeperate</span>

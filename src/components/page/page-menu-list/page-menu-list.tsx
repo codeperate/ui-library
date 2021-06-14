@@ -4,7 +4,7 @@ import { Component, h, Host } from '@stencil/core';
 })
 export class PageMenuList {
   render() {
-    return <Host class="grid grid-cols-1 gap-4">
+    return <Host class="">
       <ui-doc url="/doc/cdpmenulist.md"></ui-doc>
       <ui-doc url="/typedoc/interfaces/cdpmenulistconfig.md"></ui-doc>
       <ui-doc url="/typedoc/interfaces/cdpmenulistprops.md"></ui-doc>

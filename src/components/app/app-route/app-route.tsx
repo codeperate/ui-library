@@ -13,6 +13,9 @@ export class AppRoute {
     return (
       <Host class="grid grid-cols-1 max-w-screen-xl mx-auto p-4">
         <Router.Switch>
+          <Route path={/^\/components\/cdp-accordion/}>
+            <page-accordion></page-accordion>
+          </Route>
           <Route path={/^\/change-log/}>
             <page-change-log></page-change-log>
           </Route>
