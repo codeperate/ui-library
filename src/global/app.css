@@ -8,8 +8,8 @@ body {
 ui-doc pre code {
   @apply bg-dark-200 text-white p-4 w-full rounded-lg block;
 }
-ui-doc h1 {
-  @apply border-b;
+h1 {
+  @apply text-3xl border-b;
 }
 ui-doc table {
   @apply border-collapse;
