@@ -11,7 +11,7 @@ export class AppRoute {
 		const Router = router;
 		const Route = (props, child) => <StencilRoute {...props}>{child}</StencilRoute>;
 		return (
-			<Host class="grid grid-cols-1 max-w-screen-xl mx-auto">
+			<Host class="grid grid-cols-1 max-w-screen-xl mx-auto p-4">
 				<Router.Switch>
 					<Route path={/^\/components\/cdp-menu/}>
 						<page-menu></page-menu>

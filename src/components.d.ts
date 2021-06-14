@@ -36,6 +36,9 @@ export namespace Components {
     }
     interface PageMenu {
     }
+    interface UiDoc {
+        "url": string;
+    }
 }
 declare global {
     interface HTMLAppMenuElement extends Components.AppMenu, HTMLStencilElement {
@@ -92,6 +95,12 @@ declare global {
         prototype: HTMLPageMenuElement;
         new (): HTMLPageMenuElement;
     };
+    interface HTMLUiDocElement extends Components.UiDoc, HTMLStencilElement {
+    }
+    var HTMLUiDocElement: {
+        prototype: HTMLUiDocElement;
+        new (): HTMLUiDocElement;
+    };
     interface HTMLElementTagNameMap {
         "app-menu": HTMLAppMenuElement;
         "app-root": HTMLAppRootElement;
@@ -102,6 +111,7 @@ declare global {
         "cdp-modal": HTMLCdpModalElement;
         "page-home": HTMLPageHomeElement;
         "page-menu": HTMLPageMenuElement;
+        "ui-doc": HTMLUiDocElement;
     }
 }
 declare namespace LocalJSX {
@@ -133,6 +143,9 @@ declare namespace LocalJSX {
     }
     interface PageMenu {
     }
+    interface UiDoc {
+        "url": string;
+    }
     interface IntrinsicElements {
         "app-menu": AppMenu;
         "app-root": AppRoot;
@@ -143,6 +156,7 @@ declare namespace LocalJSX {
         "cdp-modal": CdpModal;
         "page-home": PageHome;
         "page-menu": PageMenu;
+        "ui-doc": UiDoc;
     }
 }
 export { LocalJSX as JSX };
@@ -158,6 +172,7 @@ declare module "@stencil/core" {
             "cdp-modal": LocalJSX.CdpModal & JSXBase.HTMLAttributes<HTMLCdpModalElement>;
             "page-home": LocalJSX.PageHome & JSXBase.HTMLAttributes<HTMLPageHomeElement>;
             "page-menu": LocalJSX.PageMenu & JSXBase.HTMLAttributes<HTMLPageMenuElement>;
+            "ui-doc": LocalJSX.UiDoc & JSXBase.HTMLAttributes<HTMLUiDocElement>;
         }
     }
 }

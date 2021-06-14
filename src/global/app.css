@@ -2,7 +2,13 @@
 html,
 body {
 	@apply w-full min-h-full;
-	font-family: '微軟正黑體';
+	font-family: 'Microsoft JhengHei UI';
+}
+ui-doc code {
+	@apply bg-dark-200 text-white p-4 w-full rounded-lg block;
+}
+ui-doc a {
+	@apply text-blue-600;
 }
 *::-webkit-scrollbar {
 	width: 3px;

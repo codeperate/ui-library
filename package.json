@@ -20,7 +20,8 @@
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
-    "generate": "stencil generate"
+    "generate": "stencil generate",
+    "doc": "typedoc --out docs src/components/cdp/cdp-menu/cdp-menu.interface.ts"
   },
   "dependencies": {
     "@codeperate/stencil-windicss": "^2.1.0",
@@ -34,6 +35,9 @@
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^15.12.2",
-    "@windicss/plugin-icons": "^1.0.2"
+    "@windicss/plugin-icons": "^1.0.2",
+    "typedoc": "^0.20.36",
+    "typedoc-plugin-markdown": "^3.9.0",
+    "typescript": "4.2"
   }
 }
