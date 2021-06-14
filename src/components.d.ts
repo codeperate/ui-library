@@ -32,9 +32,13 @@ export namespace Components {
         "config": CdpModalConfig;
         "props": CdpModalProps;
     }
+    interface PageChangeLog {
+    }
     interface PageHome {
     }
     interface PageMenu {
+    }
+    interface PageMenuList {
     }
     interface UiDoc {
         "url": string;
@@ -83,6 +87,12 @@ declare global {
         prototype: HTMLCdpModalElement;
         new (): HTMLCdpModalElement;
     };
+    interface HTMLPageChangeLogElement extends Components.PageChangeLog, HTMLStencilElement {
+    }
+    var HTMLPageChangeLogElement: {
+        prototype: HTMLPageChangeLogElement;
+        new (): HTMLPageChangeLogElement;
+    };
     interface HTMLPageHomeElement extends Components.PageHome, HTMLStencilElement {
     }
     var HTMLPageHomeElement: {
@@ -94,6 +104,12 @@ declare global {
     var HTMLPageMenuElement: {
         prototype: HTMLPageMenuElement;
         new (): HTMLPageMenuElement;
+    };
+    interface HTMLPageMenuListElement extends Components.PageMenuList, HTMLStencilElement {
+    }
+    var HTMLPageMenuListElement: {
+        prototype: HTMLPageMenuListElement;
+        new (): HTMLPageMenuListElement;
     };
     interface HTMLUiDocElement extends Components.UiDoc, HTMLStencilElement {
     }
@@ -109,8 +125,10 @@ declare global {
         "cdp-menu": HTMLCdpMenuElement;
         "cdp-menu-list": HTMLCdpMenuListElement;
         "cdp-modal": HTMLCdpModalElement;
+        "page-change-log": HTMLPageChangeLogElement;
         "page-home": HTMLPageHomeElement;
         "page-menu": HTMLPageMenuElement;
+        "page-menu-list": HTMLPageMenuListElement;
         "ui-doc": HTMLUiDocElement;
     }
 }
@@ -139,9 +157,13 @@ declare namespace LocalJSX {
         "onOpened"?: (event: CustomEvent<any>) => void;
         "props"?: CdpModalProps;
     }
+    interface PageChangeLog {
+    }
     interface PageHome {
     }
     interface PageMenu {
+    }
+    interface PageMenuList {
     }
     interface UiDoc {
         "url": string;
@@ -154,8 +176,10 @@ declare namespace LocalJSX {
         "cdp-menu": CdpMenu;
         "cdp-menu-list": CdpMenuList;
         "cdp-modal": CdpModal;
+        "page-change-log": PageChangeLog;
         "page-home": PageHome;
         "page-menu": PageMenu;
+        "page-menu-list": PageMenuList;
         "ui-doc": UiDoc;
     }
 }
@@ -170,8 +194,10 @@ declare module "@stencil/core" {
             "cdp-menu": LocalJSX.CdpMenu & JSXBase.HTMLAttributes<HTMLCdpMenuElement>;
             "cdp-menu-list": LocalJSX.CdpMenuList & JSXBase.HTMLAttributes<HTMLCdpMenuListElement>;
             "cdp-modal": LocalJSX.CdpModal & JSXBase.HTMLAttributes<HTMLCdpModalElement>;
+            "page-change-log": LocalJSX.PageChangeLog & JSXBase.HTMLAttributes<HTMLPageChangeLogElement>;
             "page-home": LocalJSX.PageHome & JSXBase.HTMLAttributes<HTMLPageHomeElement>;
             "page-menu": LocalJSX.PageMenu & JSXBase.HTMLAttributes<HTMLPageMenuElement>;
+            "page-menu-list": LocalJSX.PageMenuList & JSXBase.HTMLAttributes<HTMLPageMenuListElement>;
             "ui-doc": LocalJSX.UiDoc & JSXBase.HTMLAttributes<HTMLUiDocElement>;
         }
     }

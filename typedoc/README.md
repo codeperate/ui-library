@@ -1,5 +1,3 @@
-cdp-ui-library / [Exports](modules.md)
-
 <img src="https://github.com/codeperate/ui-library/blob/main/src/assets/icon-color.svg" width="50px" height="50px"/>
 
 # Codeperate UI Library

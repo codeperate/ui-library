@@ -14,6 +14,11 @@ export class AppMenu {
     icon: () => <i class="fas fa-home"></i>,
   },
   {
+    name: "Change Log",
+    href: "/change-log",
+    icon: () => <i class="fas fa-edit"></i>,
+  },
+  {
     name: "UI Components",
     isActive: (path) => path.startsWith("/components"),
     icon: () => <i class="far fa-object-ungroup"></i>,
@@ -62,9 +67,13 @@ export class AppMenu {
             }}
               props={{ activePath }}
             ></cdp-menu-list>
+            <div class="border-t p-2 grid-cols-[repeat(auto-fit,40px)]">
+              <a href="https://github.com/codeperate/ui-library" class="p-2 hover:bg-gray-200 inline-block rounded-lg"><i class="fab fa-github fa-fw"></i></a>
+            </div>
           </div>
         </cdp-menu>
       </Host>
     );
   }
 }
+

@@ -1,33 +1,50 @@
 @import '../../node_modules/@fortawesome/fontawesome-free/css/all.css';
+@import '../../node_modules/highlight.js/styles/vs2015.css';
 html,
 body {
-	@apply w-full min-h-full;
-	font-family: 'Microsoft JhengHei UI';
+  @apply w-full min-h-full;
+  font-family: 'Microsoft JhengHei UI';
 }
-ui-doc code {
-	@apply bg-dark-200 text-white p-4 w-full rounded-lg block;
+ui-doc pre code {
+  @apply bg-dark-200 text-white p-4 w-full rounded-lg block;
+}
+ui-doc h1 {
+  @apply border-b;
+}
+ui-doc table {
+  @apply border-collapse;
 }
 ui-doc a {
-	@apply text-blue-600;
+  @apply text-blue-600;
+}
+ui-doc thead th {
+  @apply border m-0 p-3;
+}
+ui-doc td {
+  @apply border m-0 p-3;
+}
+ui-doc strong code,
+ui-doc p code {
+  @apply bg-gray-200 p-1 rounded-md;
 }
 *::-webkit-scrollbar {
-	width: 3px;
+  width: 3px;
 }
 
 /* Track */
 *::-webkit-scrollbar-track {
-	background: #f1f1f1;
+  background: #f1f1f1;
 }
 
 /* Handle */
 *::-webkit-scrollbar-thumb {
-	background: #888;
+  background: #888;
 }
 
 /* Handle on hover */
 *::-webkit-scrollbar-thumb:hover {
-	background: #555;
+  background: #555;
 }
 * {
-	scrollbar-width: thin;
+  scrollbar-width: thin;
 }
