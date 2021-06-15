@@ -56,7 +56,7 @@ export class CdpTooltip {
         return (
             <Host class="relative inline-block">
                 <slot></slot>
-                <div ref={(el) => this.tooltipEl = el} class={`${classList.tooltip} ${this.display ? "block" : "hidden"}`}>
+                <div ref={(el) => this.tooltipEl = el} class={`${classList.tooltip}`}>
                     <slot name="tooltip"></slot>
                     {arrow ? <div id="arrow" data-popper-arrow>
                         <div class={classList.arrow}></div>

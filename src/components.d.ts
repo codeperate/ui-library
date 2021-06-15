@@ -9,7 +9,8 @@ import { CdpAccordionConfig, CdpAccordionProps } from "./components/cdp/cdp-acco
 import { CdpMenuConfig, CdpMenuProps } from "./components/cdp/cdp-menu/cdp-menu.interface";
 import { CdpMenuListConfig, CdpMenuListProps } from "./components/cdp/cdp-menu-list/cdp-menu-list.interface";
 import { CdpModalConfig, CdpModalProps } from "./components/cdp/cdp-modal/cdp-modal.interface";
-import { ComTooltipConfig } from "./components/cdp/cdp-tooltip/cdp-tooltip";
+import { CdpSwiperConfig, CdpSwiperProps } from "./components/cdp/cdp-swiper/cdp-swiper.interface";
+import { CdpTooltipConfig } from "./components/cdp/cdp-tooltip/cdp-tooltip.interface";
 export namespace Components {
     interface AppMenu {
     }
@@ -33,10 +34,12 @@ export namespace Components {
         "config": CdpModalConfig;
         "props": CdpModalProps;
     }
+    interface CdpSwiper {
+        "config": CdpSwiperConfig;
+        "props": CdpSwiperProps;
+    }
     interface CdpTooltip {
-        "config": ComTooltipConfig;
-        "hide": () => Promise<void>;
-        "show": () => Promise<void>;
+        "config": CdpTooltipConfig;
     }
     interface PageAccordion {
     }
@@ -97,6 +100,12 @@ declare global {
         prototype: HTMLCdpModalElement;
         new (): HTMLCdpModalElement;
     };
+    interface HTMLCdpSwiperElement extends Components.CdpSwiper, HTMLStencilElement {
+    }
+    var HTMLCdpSwiperElement: {
+        prototype: HTMLCdpSwiperElement;
+        new (): HTMLCdpSwiperElement;
+    };
     interface HTMLCdpTooltipElement extends Components.CdpTooltip, HTMLStencilElement {
     }
     var HTMLCdpTooltipElement: {
@@ -153,6 +162,7 @@ declare global {
         "cdp-menu": HTMLCdpMenuElement;
         "cdp-menu-list": HTMLCdpMenuListElement;
         "cdp-modal": HTMLCdpModalElement;
+        "cdp-swiper": HTMLCdpSwiperElement;
         "cdp-tooltip": HTMLCdpTooltipElement;
         "page-accordion": HTMLPageAccordionElement;
         "page-change-log": HTMLPageChangeLogElement;
@@ -188,8 +198,12 @@ declare namespace LocalJSX {
         "onOpened"?: (event: CustomEvent<any>) => void;
         "props"?: CdpModalProps;
     }
+    interface CdpSwiper {
+        "config"?: CdpSwiperConfig;
+        "props"?: CdpSwiperProps;
+    }
     interface CdpTooltip {
-        "config"?: ComTooltipConfig;
+        "config"?: CdpTooltipConfig;
     }
     interface PageAccordion {
     }
@@ -214,6 +228,7 @@ declare namespace LocalJSX {
         "cdp-menu": CdpMenu;
         "cdp-menu-list": CdpMenuList;
         "cdp-modal": CdpModal;
+        "cdp-swiper": CdpSwiper;
         "cdp-tooltip": CdpTooltip;
         "page-accordion": PageAccordion;
         "page-change-log": PageChangeLog;
@@ -235,6 +250,7 @@ declare module "@stencil/core" {
             "cdp-menu": LocalJSX.CdpMenu & JSXBase.HTMLAttributes<HTMLCdpMenuElement>;
             "cdp-menu-list": LocalJSX.CdpMenuList & JSXBase.HTMLAttributes<HTMLCdpMenuListElement>;
             "cdp-modal": LocalJSX.CdpModal & JSXBase.HTMLAttributes<HTMLCdpModalElement>;
+            "cdp-swiper": LocalJSX.CdpSwiper & JSXBase.HTMLAttributes<HTMLCdpSwiperElement>;
             "cdp-tooltip": LocalJSX.CdpTooltip & JSXBase.HTMLAttributes<HTMLCdpTooltipElement>;
             "page-accordion": LocalJSX.PageAccordion & JSXBase.HTMLAttributes<HTMLPageAccordionElement>;
             "page-change-log": LocalJSX.PageChangeLog & JSXBase.HTMLAttributes<HTMLPageChangeLogElement>;
