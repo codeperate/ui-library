@@ -8,13 +8,13 @@ export class PageTooltip {
   render() {
     return <Host class="">
       <h1>Preview</h1>
-      <button onClick={() => this.props = { ...this.props, display: true }} class="place-self-start">Show Modal</button>
-      <cdp-modal props={this.props}>
-        <div class="bg-white p-4 rounded-lg">This is a modal!</div>
-      </cdp-modal>
-      <ui-doc url="/doc/cdpmodal.md"></ui-doc>
-      <ui-doc url="/typedoc/interfaces/cdpmodalconfig.md"></ui-doc>
-      <ui-doc url="/typedoc/interfaces/cdpmodalprops.md"></ui-doc>
+      <cdp-tooltip class="place-self-start" config={{ arrow: true }}>
+        <button>Hover me</button>
+        <div slot="tooltip">Hi!</div>
+      </cdp-tooltip>
+      <ui-doc url="/doc/cdptooltip.md"></ui-doc>
+      <ui-doc url="/typedoc/interfaces/cdptooltipconfig.md"></ui-doc>
+      <ui-doc url="/typedoc/interfaces/cdptooltipprops.md"></ui-doc>
     </Host>
   }
 }

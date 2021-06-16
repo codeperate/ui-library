@@ -46,6 +46,7 @@ export class CdpMenu {
   }
   @Watch('props')
   configChangeHandler(n: CdpMenuProps) {
+    this.createProxy();
     if (n.display) {
       this.translateX = 100;
       this.setTranslateX()
@@ -53,10 +54,10 @@ export class CdpMenu {
     if (!n.display) this.removeTranslateX()
   }
   open() {
-    this._props = { ...this._props, display: true };
+    this._props.display = true;
   }
   close() {
-    this._props = { ...this._props, display: false };
+    this._props.display = false;
   }
   setTranslateX() {
     if (this.containerEl) this.containerEl.style.transform = `translateX(${this.translateX - 100}%)`;
@@ -74,9 +75,15 @@ export class CdpMenu {
   };
   componentWillLoad() {
     this._config = deepAssign(this.config, this.defaultConfig);
-    this._props = new Proxy(this.props, this._config.proxyHandler ?? {})
+    this.createProxy();
   }
-
+  createProxy() {
+    const set = (target, prop, value, receiver) => {
+      this.props = { ...target, [prop]: value }
+      return Reflect.set(target, prop, value, receiver);
+    }
+    this._props = new Proxy(this.props, this._config.proxyHandler ?? { set })
+  }
   render() {
     const { classList, width, background } = this._config;
     const { display } = this._props;

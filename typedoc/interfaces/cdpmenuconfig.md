@@ -26,6 +26,12 @@ ___
 
 ___
 
+### proxyHandler
+
+• `Optional` **proxyHandler**: `ProxyHandler`<[CdpMenuProps](cdpmenuprops.md)\>
+
+___
+
 ### sensitivity
 
 • `Optional` **sensitivity**: `number`

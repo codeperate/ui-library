@@ -28,6 +28,12 @@ export class AppRoute {
           <Route path={/^\/components\/cdp-menu/}>
             <page-menu></page-menu>
           </Route>
+          <Route path={/^\/components\/cdp-tooltip/}>
+            <page-tooltip></page-tooltip>
+          </Route>
+          <Route path={/^\/components\/cdp-swiper/}>
+            <page-swiper></page-swiper>
+          </Route>
           <Route path={/^\//}>
             <page-home></page-home>
           </Route>

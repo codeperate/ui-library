@@ -10,6 +10,10 @@
 - [CdpMenuProps](interfaces/cdpmenuprops.md)
 - [CdpModalConfig](interfaces/cdpmodalconfig.md)
 - [CdpModalProps](interfaces/cdpmodalprops.md)
+- [CdpSwiperConfig](interfaces/cdpswiperconfig.md)
+- [CdpSwiperProps](interfaces/cdpswiperprops.md)
+- [CdpTooltipConfig](interfaces/cdptooltipconfig.md)
+- [CdpTooltipProps](interfaces/cdptooltipprops.md)
 
 ## Type aliases
 

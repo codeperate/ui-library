@@ -16,12 +16,16 @@ export class CdpTooltip {
     showEvents: ['mouseenter', 'focus'],
     hideEvents: ['mouseleave', 'blur'],
     classList: {
-      tooltip: `bg-gray-600 text-white rounded w-max px-2 py-1 z-10 block`,
-      arrow: `bg-gray-600 transform-gpu rotate-45 w-2 h-2`
+      tooltip: "bg-gray-600 text-white rounded w-max px-2 py-1 z-10 block",
+      arrow: "bg-gray-600 transform-gpu rotate-45 w-2 h-2"
+    },
+    option: {
+      strategy: "fixed",
+      placement: "bottom"
     }
   };
   @State() _config: CdpTooltipConfig;
-  @State() props: CdpTooltipProps;
+  @Prop({ mutable: true }) props: CdpTooltipProps = { display: false };
   tooltipEl: HTMLElement
   popperInstance: Instance;
   componentWillLoad() {
@@ -55,7 +59,7 @@ export class CdpTooltip {
     const { classList, arrow } = this._config;
     const tooltipClass = classList.tooltip + (this.props.display ? '' : ' !hidden');
     return (
-      <Host class="relative inline-block">
+      <Host class="relative">
         <slot></slot>
         <div ref={(el) => this.tooltipEl = el} class={tooltipClass}>
           <slot name="tooltip"></slot>

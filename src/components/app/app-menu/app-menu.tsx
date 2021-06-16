@@ -40,6 +40,13 @@ export class AppMenu {
       {
         name: "Modal",
         href: "/components/cdp-modal"
+      },
+      {
+        name: "Tooltip",
+        href: "/components/cdp-tooltip"
+      }, {
+        name: "Swiper",
+        href: "/components/cdp-swiper"
       }
     ]
   }]
