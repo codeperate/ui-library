@@ -9,7 +9,7 @@ import { CdpAccordionConfig, CdpAccordionProps } from "./components/cdp/cdp-acco
 import { CdpMenuConfig, CdpMenuProps } from "./components/cdp/cdp-menu/cdp-menu.interface";
 import { CdpMenuListConfig, CdpMenuListProps } from "./components/cdp/cdp-menu-list/cdp-menu-list.interface";
 import { CdpModalConfig, CdpModalProps } from "./components/cdp/cdp-modal/cdp-modal.interface";
-import { ComTooltipConfig } from "./components/cdp/cdp-tooltip/cdp-tooltip";
+import { CdpTooltipConfig } from "./components/cdp/cdp-tooltip/cdp-tooltip.interface";
 export namespace Components {
     interface AppMenu {
     }
@@ -34,9 +34,7 @@ export namespace Components {
         "props": CdpModalProps;
     }
     interface CdpTooltip {
-        "config": ComTooltipConfig;
-        "hide": () => Promise<void>;
-        "show": () => Promise<void>;
+        "config": CdpTooltipConfig;
     }
     interface PageAccordion {
     }
@@ -49,6 +47,8 @@ export namespace Components {
     interface PageMenuList {
     }
     interface PageModal {
+    }
+    interface PageTooltip {
     }
     interface UiDoc {
         "url": string;
@@ -139,6 +139,12 @@ declare global {
         prototype: HTMLPageModalElement;
         new (): HTMLPageModalElement;
     };
+    interface HTMLPageTooltipElement extends Components.PageTooltip, HTMLStencilElement {
+    }
+    var HTMLPageTooltipElement: {
+        prototype: HTMLPageTooltipElement;
+        new (): HTMLPageTooltipElement;
+    };
     interface HTMLUiDocElement extends Components.UiDoc, HTMLStencilElement {
     }
     var HTMLUiDocElement: {
@@ -160,6 +166,7 @@ declare global {
         "page-menu": HTMLPageMenuElement;
         "page-menu-list": HTMLPageMenuListElement;
         "page-modal": HTMLPageModalElement;
+        "page-tooltip": HTMLPageTooltipElement;
         "ui-doc": HTMLUiDocElement;
     }
 }
@@ -189,7 +196,7 @@ declare namespace LocalJSX {
         "props"?: CdpModalProps;
     }
     interface CdpTooltip {
-        "config"?: ComTooltipConfig;
+        "config"?: CdpTooltipConfig;
     }
     interface PageAccordion {
     }
@@ -202,6 +209,8 @@ declare namespace LocalJSX {
     interface PageMenuList {
     }
     interface PageModal {
+    }
+    interface PageTooltip {
     }
     interface UiDoc {
         "url": string;
@@ -221,6 +230,7 @@ declare namespace LocalJSX {
         "page-menu": PageMenu;
         "page-menu-list": PageMenuList;
         "page-modal": PageModal;
+        "page-tooltip": PageTooltip;
         "ui-doc": UiDoc;
     }
 }
@@ -242,6 +252,7 @@ declare module "@stencil/core" {
             "page-menu": LocalJSX.PageMenu & JSXBase.HTMLAttributes<HTMLPageMenuElement>;
             "page-menu-list": LocalJSX.PageMenuList & JSXBase.HTMLAttributes<HTMLPageMenuListElement>;
             "page-modal": LocalJSX.PageModal & JSXBase.HTMLAttributes<HTMLPageModalElement>;
+            "page-tooltip": LocalJSX.PageTooltip & JSXBase.HTMLAttributes<HTMLPageTooltipElement>;
             "ui-doc": LocalJSX.UiDoc & JSXBase.HTMLAttributes<HTMLUiDocElement>;
         }
     }
