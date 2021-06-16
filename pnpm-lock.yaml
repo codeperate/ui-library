@@ -12,6 +12,7 @@ specifiers:
   marked: ^2.0.7
   path-to-regexp: ^6.2.0
   stencil-router-v2: ^0.6.0
+  swiper: ^6.7.0
   typedoc: ^0.20.36
   typedoc-plugin-markdown: ^3.9.0
   typedoc-plugin-merge-modules: ^2.1.1
@@ -27,6 +28,7 @@ dependencies:
   marked: 2.0.7
   path-to-regexp: 6.2.0
   stencil-router-v2: 0.6.0_@stencil+core@2.6.0
+  swiper: 6.7.0
   windicss: 3.1.3
 
 devDependencies:
@@ -105,6 +107,12 @@ packages:
   /concat-map/0.0.1:
     resolution: {integrity: sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=}
     dev: true
+
+  /dom7/3.0.0:
+    resolution: {integrity: sha512-oNlcUdHsC4zb7Msx7JN3K0Nro1dzJ48knvBOnDPKJ2GV9wl1i5vydJZUSyOfrkKFDZEud/jBsTk92S/VGSAe/g==}
+    dependencies:
+      ssr-window: 3.0.0
+    dev: false
 
   /fs-extra/9.1.0:
     resolution: {integrity: sha512-hcg3ZmepS30/7BSFqRvoo3DOMQu7IjqxO5nCDt+zM9XWjb33Wg7ziNT+Qvqbuc3+gWpzO02JubVyk2G4Zvo1OQ==}
@@ -293,6 +301,10 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
+  /ssr-window/3.0.0:
+    resolution: {integrity: sha512-q+8UfWDg9Itrg0yWK7oe5p/XRCJpJF9OBtXfOPgSJl+u3Xd5KI328RUEvUqSMVM9CiQUEf1QdBzJMkYGErj9QA==}
+    dev: false
+
   /stencil-router-v2/0.6.0_@stencil+core@2.6.0:
     resolution: {integrity: sha512-E6ncNTIbFOleADelSQ7V/aSkZvdyTW8OKpPqxLi3AdUf8EwN0vZAMsIKHyPPS2hHLCh2/qNyVb/pbnzOszYBCw==}
     peerDependencies:
@@ -300,6 +312,15 @@ packages:
     dependencies:
       '@stencil/core': 2.6.0
       '@stencil/store': 1.4.1_@stencil+core@2.6.0
+    dev: false
+
+  /swiper/6.7.0:
+    resolution: {integrity: sha512-zCfvWn7H7mCq7jgVurckhAwkjPUeMCkdC4rA7lagvaD3mIrNhKiaYYo2+nkxMVpiaWuCQ38e44Mya/dKb7HpyQ==}
+    engines: {node: '>= 4.7.0'}
+    requiresBuild: true
+    dependencies:
+      dom7: 3.0.0
+      ssr-window: 3.0.0
     dev: false
 
   /typedoc-default-themes/0.12.10:
