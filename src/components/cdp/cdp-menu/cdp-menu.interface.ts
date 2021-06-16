@@ -29,4 +29,5 @@ export interface CdpMenuConfig {
     /** @default "<md:fixed md:hidden w-screen h-screen bg-black bg-opacity-50" */
     background?: string;
   };
+  proxyHandler?: ProxyHandler<CdpMenuProps>;
 }

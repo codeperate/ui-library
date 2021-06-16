@@ -22,6 +22,7 @@ export class CdpMenu {
   @Prop({ mutable: true }) props: CdpMenuProps = {
     display: false,
   };
+  _props: CdpMenuProps
   initXPos: number;
   finalXPos: number;
   offsetX: number;
@@ -52,10 +53,10 @@ export class CdpMenu {
     if (!n.display) this.removeTranslateX()
   }
   open() {
-    this.props = { ...this.props, display: true };
+    this._props = { ...this._props, display: true };
   }
   close() {
-    this.props = { ...this.props, display: false };
+    this._props = { ...this._props, display: false };
   }
   setTranslateX() {
     if (this.containerEl) this.containerEl.style.transform = `translateX(${this.translateX - 100}%)`;
@@ -73,11 +74,12 @@ export class CdpMenu {
   };
   componentWillLoad() {
     this._config = deepAssign(this.config, this.defaultConfig);
+    this._props = new Proxy(this.props, this._config.proxyHandler ?? {})
   }
 
   render() {
     const { classList, width, background } = this._config;
-    const { display } = this.props;
+    const { display } = this._props;
     return (
       <Host class={`${classList.host}`}>
         {display && background ? <div class={`${classList.background}`} onClick={() => this.close()}></div> : ""}
