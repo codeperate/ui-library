@@ -23,6 +23,18 @@
     "generate": "stencil generate",
     "doc": "typedoc"
   },
+  "keywords": [
+    "StencilJS",
+    "Stencil",
+    "web components",
+    "ui",
+    "component",
+    "library"
+  ],
+  "author": "Codeperate Limited",
+  "bugs": {
+    "url": "https://github.com/codeperate/ui-library/issues"
+  },
   "dependencies": {
     "@codeperate/stencil-windicss": "^2.1.0",
     "@fortawesome/fontawesome-free": "^5.15.3",
@@ -40,6 +52,7 @@
     "@types/node": "^15.12.2",
     "@windicss/plugin-icons": "^1.0.2",
     "glob": "^7.1.7",
+    "np": "^7.5.0",
     "typedoc": "^0.20.36",
     "typedoc-plugin-markdown": "^3.9.0",
     "typedoc-plugin-merge-modules": "^2.1.1",
