@@ -63,7 +63,10 @@ export class CdpMenu {
     if (this.containerEl) this.containerEl.style.transform = `translateX(${this.translateX - 100}%)`;
   }
   removeTranslateX() {
-    if (this.containerEl) this.containerEl.style.transform = null;
+    if (this.containerEl) {
+      this.containerEl.style.transform = null;
+      this.translateX = 0;
+    }
   }
   moveHandler = (e: TouchEvent) => {
     if (e instanceof TouchEvent) this.finalXPos = e.touches[0].clientX;
