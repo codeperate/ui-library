@@ -62,5 +62,8 @@
     "typedoc-plugin-markdown": "^3.9.0",
     "typedoc-plugin-merge-modules": "^2.1.1",
     "typescript": "4.2"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
