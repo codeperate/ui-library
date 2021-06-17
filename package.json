@@ -15,13 +15,14 @@
     "loader/"
   ],
   "scripts": {
-    "build:docs": "stencil build --config stencil.config.docs.ts",
+    "build:dist": "stencil build --config stencil.config.build.ts",
     "build": "stencil build",
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate",
-    "doc": "typedoc"
+    "doc": "typedoc",
+    "release": "npm run build:dist && np"
   },
   "keywords": [
     "StencilJS",

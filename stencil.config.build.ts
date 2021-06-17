@@ -10,6 +10,7 @@ export const config: Config = {
       preflight: false,
     }),
   ],
+  tsconfig: 'tsconfig.build.json',
   outputTargets: [
     {
       type: 'dist',
