@@ -27,6 +27,8 @@ export const config: Config = {
           src: '../doc',
           dest: './doc',
         },
+        { src: './_headers' },
+        { src: './_redirects' },
       ],
     },
   ],
