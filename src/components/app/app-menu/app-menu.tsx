@@ -7,7 +7,7 @@ import { CdpMenuProps } from '../../cdp/cdp-menu/cdp-menu.interface';
   tag: 'app-menu',
 })
 export class AppMenu {
-  @Element() rootEl: HTMLAppRootElement;
+  @Element() rootEl: HTMLAppMenuElement;
   menuItem: CdpMenuItem[] = [{
     name: "Home",
     href: "/",

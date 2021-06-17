@@ -1,4 +1,4 @@
-# cdp-ui-library
+# @codeperate/cdp-ui-library
 
 ## Interfaces
 
