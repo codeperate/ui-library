@@ -14,6 +14,7 @@ export const config: Config = {
     {
       type: 'www',
       serviceWorker: null,
+      dir: 'docs',
       copy: [
         {
           src: '../typedoc',

@@ -16,6 +16,7 @@
   ],
   "scripts": {
     "preinstall": "npx only-allow pnpm",
+    "build:docs": "stencil build --config stencil.config.docs.ts",
     "build": "stencil build",
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
@@ -37,7 +38,6 @@
   },
   "dependencies": {
     "@codeperate/stencil-windicss": "^2.1.0",
-    "@fortawesome/fontawesome-free": "^5.15.3",
     "@popperjs/core": "^2.9.2",
     "@stencil/core": "^2.0.1",
     "highlight.js": "^11.0.1",
