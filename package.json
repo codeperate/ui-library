@@ -15,7 +15,6 @@
     "loader/"
   ],
   "scripts": {
-    "preinstall": "npx only-allow pnpm",
     "build:docs": "stencil build --config stencil.config.docs.ts",
     "build": "stencil build",
     "start": "stencil build --dev --watch --serve",
