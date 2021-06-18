@@ -4,7 +4,7 @@ import { CdpModalProps } from '../../cdp/cdp-modal/cdp-modal.interface';
   tag: 'page-modal'
 })
 export class PageModal {
-  @State() props: CdpModalProps;
+  @State() props: CdpModalProps = { display: true };
   render() {
     return <Host class="">
       <h1>Preview</h1>
