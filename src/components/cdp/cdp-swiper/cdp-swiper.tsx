@@ -25,8 +25,8 @@ export class CdpSwiper {
     this.swiper = new Swiper(this.rootEl, this._config.option);
   }
   @Watch('props')
-  propsHandler(n: CdpSwiperProps) {
-    if (n.slideTo) this.swiper.slideTo(n.slideTo)
+  propsHandler(n: CdpSwiperProps, o: CdpSwiperProps) {
+    if (n.slideTo != o.slideTo) this.swiper.slideTo(n.slideTo)
   }
   render() {
     const { classList } = this._config
