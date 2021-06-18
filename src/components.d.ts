@@ -12,6 +12,12 @@ import { CdpModalConfig, CdpModalProps } from "./components/cdp/cdp-modal/cdp-mo
 import { CdpSwiperConfig, CdpSwiperProps } from "./components/cdp/cdp-swiper/cdp-swiper.interface";
 import { CdpTooltipConfig, CdpTooltipProps } from "./components/cdp/cdp-tooltip/cdp-tooltip.interface";
 export namespace Components {
+    interface AppMenu {
+    }
+    interface AppRoot {
+    }
+    interface AppRoute {
+    }
     interface CdpAccordion {
         "config": CdpAccordionConfig;
         "props": CdpAccordionProps;
@@ -36,8 +42,45 @@ export namespace Components {
         "config": CdpTooltipConfig;
         "props": CdpTooltipProps;
     }
+    interface PageAccordion {
+    }
+    interface PageChangeLog {
+    }
+    interface PageHome {
+    }
+    interface PageMenu {
+    }
+    interface PageMenuList {
+    }
+    interface PageModal {
+    }
+    interface PageSwiper {
+    }
+    interface PageTooltip {
+    }
+    interface UiDoc {
+        "url": string;
+    }
 }
 declare global {
+    interface HTMLAppMenuElement extends Components.AppMenu, HTMLStencilElement {
+    }
+    var HTMLAppMenuElement: {
+        prototype: HTMLAppMenuElement;
+        new (): HTMLAppMenuElement;
+    };
+    interface HTMLAppRootElement extends Components.AppRoot, HTMLStencilElement {
+    }
+    var HTMLAppRootElement: {
+        prototype: HTMLAppRootElement;
+        new (): HTMLAppRootElement;
+    };
+    interface HTMLAppRouteElement extends Components.AppRoute, HTMLStencilElement {
+    }
+    var HTMLAppRouteElement: {
+        prototype: HTMLAppRouteElement;
+        new (): HTMLAppRouteElement;
+    };
     interface HTMLCdpAccordionElement extends Components.CdpAccordion, HTMLStencilElement {
     }
     var HTMLCdpAccordionElement: {
@@ -74,16 +117,88 @@ declare global {
         prototype: HTMLCdpTooltipElement;
         new (): HTMLCdpTooltipElement;
     };
+    interface HTMLPageAccordionElement extends Components.PageAccordion, HTMLStencilElement {
+    }
+    var HTMLPageAccordionElement: {
+        prototype: HTMLPageAccordionElement;
+        new (): HTMLPageAccordionElement;
+    };
+    interface HTMLPageChangeLogElement extends Components.PageChangeLog, HTMLStencilElement {
+    }
+    var HTMLPageChangeLogElement: {
+        prototype: HTMLPageChangeLogElement;
+        new (): HTMLPageChangeLogElement;
+    };
+    interface HTMLPageHomeElement extends Components.PageHome, HTMLStencilElement {
+    }
+    var HTMLPageHomeElement: {
+        prototype: HTMLPageHomeElement;
+        new (): HTMLPageHomeElement;
+    };
+    interface HTMLPageMenuElement extends Components.PageMenu, HTMLStencilElement {
+    }
+    var HTMLPageMenuElement: {
+        prototype: HTMLPageMenuElement;
+        new (): HTMLPageMenuElement;
+    };
+    interface HTMLPageMenuListElement extends Components.PageMenuList, HTMLStencilElement {
+    }
+    var HTMLPageMenuListElement: {
+        prototype: HTMLPageMenuListElement;
+        new (): HTMLPageMenuListElement;
+    };
+    interface HTMLPageModalElement extends Components.PageModal, HTMLStencilElement {
+    }
+    var HTMLPageModalElement: {
+        prototype: HTMLPageModalElement;
+        new (): HTMLPageModalElement;
+    };
+    interface HTMLPageSwiperElement extends Components.PageSwiper, HTMLStencilElement {
+    }
+    var HTMLPageSwiperElement: {
+        prototype: HTMLPageSwiperElement;
+        new (): HTMLPageSwiperElement;
+    };
+    interface HTMLPageTooltipElement extends Components.PageTooltip, HTMLStencilElement {
+    }
+    var HTMLPageTooltipElement: {
+        prototype: HTMLPageTooltipElement;
+        new (): HTMLPageTooltipElement;
+    };
+    interface HTMLUiDocElement extends Components.UiDoc, HTMLStencilElement {
+    }
+    var HTMLUiDocElement: {
+        prototype: HTMLUiDocElement;
+        new (): HTMLUiDocElement;
+    };
     interface HTMLElementTagNameMap {
+        "app-menu": HTMLAppMenuElement;
+        "app-root": HTMLAppRootElement;
+        "app-route": HTMLAppRouteElement;
         "cdp-accordion": HTMLCdpAccordionElement;
         "cdp-menu": HTMLCdpMenuElement;
         "cdp-menu-list": HTMLCdpMenuListElement;
         "cdp-modal": HTMLCdpModalElement;
         "cdp-swiper": HTMLCdpSwiperElement;
         "cdp-tooltip": HTMLCdpTooltipElement;
+        "page-accordion": HTMLPageAccordionElement;
+        "page-change-log": HTMLPageChangeLogElement;
+        "page-home": HTMLPageHomeElement;
+        "page-menu": HTMLPageMenuElement;
+        "page-menu-list": HTMLPageMenuListElement;
+        "page-modal": HTMLPageModalElement;
+        "page-swiper": HTMLPageSwiperElement;
+        "page-tooltip": HTMLPageTooltipElement;
+        "ui-doc": HTMLUiDocElement;
     }
 }
 declare namespace LocalJSX {
+    interface AppMenu {
+    }
+    interface AppRoot {
+    }
+    interface AppRoute {
+    }
     interface CdpAccordion {
         "config"?: CdpAccordionConfig;
         "props"?: CdpAccordionProps;
@@ -110,25 +225,68 @@ declare namespace LocalJSX {
         "config"?: CdpTooltipConfig;
         "props"?: CdpTooltipProps;
     }
+    interface PageAccordion {
+    }
+    interface PageChangeLog {
+    }
+    interface PageHome {
+    }
+    interface PageMenu {
+    }
+    interface PageMenuList {
+    }
+    interface PageModal {
+    }
+    interface PageSwiper {
+    }
+    interface PageTooltip {
+    }
+    interface UiDoc {
+        "url": string;
+    }
     interface IntrinsicElements {
+        "app-menu": AppMenu;
+        "app-root": AppRoot;
+        "app-route": AppRoute;
         "cdp-accordion": CdpAccordion;
         "cdp-menu": CdpMenu;
         "cdp-menu-list": CdpMenuList;
         "cdp-modal": CdpModal;
         "cdp-swiper": CdpSwiper;
         "cdp-tooltip": CdpTooltip;
+        "page-accordion": PageAccordion;
+        "page-change-log": PageChangeLog;
+        "page-home": PageHome;
+        "page-menu": PageMenu;
+        "page-menu-list": PageMenuList;
+        "page-modal": PageModal;
+        "page-swiper": PageSwiper;
+        "page-tooltip": PageTooltip;
+        "ui-doc": UiDoc;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "app-menu": LocalJSX.AppMenu & JSXBase.HTMLAttributes<HTMLAppMenuElement>;
+            "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
+            "app-route": LocalJSX.AppRoute & JSXBase.HTMLAttributes<HTMLAppRouteElement>;
             "cdp-accordion": LocalJSX.CdpAccordion & JSXBase.HTMLAttributes<HTMLCdpAccordionElement>;
             "cdp-menu": LocalJSX.CdpMenu & JSXBase.HTMLAttributes<HTMLCdpMenuElement>;
             "cdp-menu-list": LocalJSX.CdpMenuList & JSXBase.HTMLAttributes<HTMLCdpMenuListElement>;
             "cdp-modal": LocalJSX.CdpModal & JSXBase.HTMLAttributes<HTMLCdpModalElement>;
             "cdp-swiper": LocalJSX.CdpSwiper & JSXBase.HTMLAttributes<HTMLCdpSwiperElement>;
             "cdp-tooltip": LocalJSX.CdpTooltip & JSXBase.HTMLAttributes<HTMLCdpTooltipElement>;
+            "page-accordion": LocalJSX.PageAccordion & JSXBase.HTMLAttributes<HTMLPageAccordionElement>;
+            "page-change-log": LocalJSX.PageChangeLog & JSXBase.HTMLAttributes<HTMLPageChangeLogElement>;
+            "page-home": LocalJSX.PageHome & JSXBase.HTMLAttributes<HTMLPageHomeElement>;
+            "page-menu": LocalJSX.PageMenu & JSXBase.HTMLAttributes<HTMLPageMenuElement>;
+            "page-menu-list": LocalJSX.PageMenuList & JSXBase.HTMLAttributes<HTMLPageMenuListElement>;
+            "page-modal": LocalJSX.PageModal & JSXBase.HTMLAttributes<HTMLPageModalElement>;
+            "page-swiper": LocalJSX.PageSwiper & JSXBase.HTMLAttributes<HTMLPageSwiperElement>;
+            "page-tooltip": LocalJSX.PageTooltip & JSXBase.HTMLAttributes<HTMLPageTooltipElement>;
+            "ui-doc": LocalJSX.UiDoc & JSXBase.HTMLAttributes<HTMLUiDocElement>;
         }
     }
 }
