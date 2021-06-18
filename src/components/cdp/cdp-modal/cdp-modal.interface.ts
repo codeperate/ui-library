@@ -1,13 +1,14 @@
 export interface CdpModalProps {
-	display?: boolean;
+  display?: boolean;
 }
 export interface CdpModalConfig {
-	classList?: {
-		container?: string;
-		host?: string;
-	};
-	animation?: {
-		open?: string | false;
-		close?: string | false;
-	};
+  classList?: {
+    container?: string;
+    host?: string;
+  };
+  animation?: {
+    open?: string | false;
+    close?: string | false;
+  };
+  bgClose?: boolean;
 }
