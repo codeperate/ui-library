@@ -1,3 +1,5 @@
+This component is basically a wrapper of [popperjs](https://popper.js.org/). The option in config property is exactly the one in popperjs.
+
 # Usage Examples
 
 ### Minimal Setup
