@@ -16,7 +16,7 @@ Documentation: https://ui-library.codeperate.com
 ## Getting Started
 
 ```
-npm i @codeperate/ui-library
+npm i @codeperate/cdp-ui-library
 ```
 
 Depends on your frontend framework, import it according to [stencil documentation](https://stenciljs.com/docs/overview)
