@@ -68,11 +68,14 @@ export class CdpModal {
       if (this.animeClass) this.animeClass.split(" ").forEach((val) => this.rootEl.children[0].classList.add(val))
     }
   }
+  bgCloseHandler(e: Event) {
+    if (this._config.bgClose && e.target == this.rootEl) this.props = { ...this.props, display: false }
+  }
   render() {
-    const { classList, bgClose } = this._config;
+    const { classList } = this._config;
     const hostClass = classList.host + (this.computedDisplay ? '' : ' !hidden');
     return (
-      <Host class={hostClass} onClick={() => { if (bgClose) this.props = { ...this.props, display: false } }}>
+      <Host class={hostClass} onClick={(e) => this.bgCloseHandler(e)}>
         <slot></slot>
       </Host>
     );
