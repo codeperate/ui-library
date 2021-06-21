@@ -12,7 +12,7 @@ export class CdpModal {
   @State() _config: CdpModalConfig;
   defaultConfig: CdpModalConfig = {
     classList: {
-      host: 'absolute h-full w-full grid grid-cols-[repeat(auto-fit,minmax(0,min-content))] auto-rows-min place-content-center left-0 top-0 bg-black bg-opacity-80 backdrop-filter',
+      host: 'absolute h-full w-full flex items-center justify-center left-0 top-0 bg-black bg-opacity-80 backdrop-filter',
     },
     animation: {
       open: 'animated animate-zoom-in',
@@ -60,14 +60,20 @@ export class CdpModal {
     this.computedDisplay = this.props.display;
     if (this.props.display) this.open();
   }
+  componentDidRender() {
+    const { open, close } = this._config.animation
+    if (this.rootEl) {
+      if (open) open.split(" ").forEach((val) => this.rootEl.children[0].classList.remove(val))
+      if (close) close.split(" ").forEach((val) => this.rootEl.children[0].classList.remove(val))
+      if (this.animeClass) this.animeClass.split(" ").forEach((val) => this.rootEl.children[0].classList.add(val))
+    }
+  }
   render() {
     const { classList, bgClose } = this._config;
     const hostClass = classList.host + (this.computedDisplay ? '' : ' !hidden');
     return (
       <Host class={hostClass} onClick={() => { if (bgClose) this.props = { ...this.props, display: false } }}>
-        <div class={this.animeClass}>
-          <slot></slot>
-        </div>
+        <slot></slot>
       </Host>
     );
   }
