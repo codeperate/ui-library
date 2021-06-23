@@ -18,7 +18,7 @@ export class CdpModal {
       open: 'animated animate-zoom-in',
       close: 'animated animate-zoom-out',
     },
-    bgClose: true
+    bgClose: true,
   };
   @State() public animeClass: string;
   @State() public computedDisplay: boolean;
@@ -51,9 +51,9 @@ export class CdpModal {
     else this.closedFn();
   }
   @Watch('props')
-  propsHandler(n: CdpModalProps) {
-    if (n.display) this.open();
-    if (!n.display) this.close();
+  propsHandler(n: CdpModalProps, o: CdpModalProps) {
+    if (n.display && !o.display) this.open();
+    if (!n.display && o.display) this.close();
   }
   componentWillLoad() {
     this._config = deepAssign(this.config, this.defaultConfig);
@@ -64,7 +64,12 @@ export class CdpModal {
     const { classList, bgClose } = this._config;
     const hostClass = classList.host + (this.computedDisplay ? '' : ' !hidden');
     return (
-      <Host class={hostClass} onClick={() => { if (bgClose) this.props = { ...this.props, display: false } }}>
+      <Host
+        class={hostClass}
+        onClick={() => {
+          if (bgClose) this.props = { ...this.props, display: false };
+        }}
+      >
         <div class={this.animeClass}>
           <slot></slot>
         </div>
