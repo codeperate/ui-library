@@ -51,9 +51,9 @@ export class CdpModal {
     else this.closedFn();
   }
   @Watch('props')
-  propsHandler(n: CdpModalProps) {
-    if (n.display) this.open();
-    if (!n.display) this.close();
+  propsHandler(n: CdpModalProps, o: CdpModalProps) {
+    if (n.display && !o.display) this.open();
+    if (!n.display && o.display) this.close();
   }
   @Watch('config')
   configChangeHandler() {
