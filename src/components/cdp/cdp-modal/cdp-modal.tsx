@@ -18,7 +18,7 @@ export class CdpModal {
       open: 'animated animate-zoom-in',
       close: 'animated animate-zoom-out',
     },
-    bgClose: true
+    bgClose: true,
   };
   @State() public animeClass: string;
   @State() public computedDisplay: boolean;
@@ -55,27 +55,31 @@ export class CdpModal {
     if (n.display) this.open();
     if (!n.display) this.close();
   }
-  componentWillLoad() {
+  @Watch('config')
+  configChangeHandler() {
     this._config = deepAssign(this.config, this.defaultConfig);
+  }
+  componentWillLoad() {
+    this.configChangeHandler();
     this.computedDisplay = this.props.display;
     if (this.props.display) this.open();
   }
   componentDidRender() {
-    const { open, close } = this._config.animation
+    const { open, close } = this._config.animation;
     if (this.rootEl) {
-      if (open) open.split(" ").forEach((val) => this.rootEl.children[0].classList.remove(val))
-      if (close) close.split(" ").forEach((val) => this.rootEl.children[0].classList.remove(val))
-      if (this.animeClass) this.animeClass.split(" ").forEach((val) => this.rootEl.children[0].classList.add(val))
+      if (open) open.split(' ').forEach(val => this.rootEl.children[0].classList.remove(val));
+      if (close) close.split(' ').forEach(val => this.rootEl.children[0].classList.remove(val));
+      if (this.animeClass) this.animeClass.split(' ').forEach(val => this.rootEl.children[0].classList.add(val));
     }
   }
   bgCloseHandler(e: Event) {
-    if (this._config.bgClose && e.target == this.rootEl) this.props = { ...this.props, display: false }
+    if (this._config.bgClose && e.target == this.rootEl) this.props = { ...this.props, display: false };
   }
   render() {
     const { classList } = this._config;
     const hostClass = classList.host + (this.computedDisplay ? '' : ' !hidden');
     return (
-      <Host class={hostClass} onClick={(e) => this.bgCloseHandler(e)}>
+      <Host class={hostClass} onClick={e => this.bgCloseHandler(e)}>
         <slot></slot>
       </Host>
     );
