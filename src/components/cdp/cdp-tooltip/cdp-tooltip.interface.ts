@@ -12,4 +12,5 @@ export interface CdpTooltipConfig {
     arrow?: string;
   };
   arrow?: boolean;
+  proxyHandler?: ProxyHandler<CdpTooltipProps>;
 }

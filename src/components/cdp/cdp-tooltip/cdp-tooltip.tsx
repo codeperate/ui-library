@@ -4,10 +4,9 @@ import { Component, Element, h, Host, Prop, State } from '@stencil/core';
 import { deepAssign } from '../../../utils/deep-assign';
 import { CdpTooltipConfig, CdpTooltipProps } from './cdp-tooltip.interface';
 
-
 @Component({
   tag: 'cdp-tooltip',
-  styleUrl: 'cdp-tooltip.css'
+  styleUrl: 'cdp-tooltip.css',
 })
 export class CdpTooltip {
   @Element() rootEl: HTMLCdpTooltipElement;
@@ -16,17 +15,18 @@ export class CdpTooltip {
     showEvents: ['mouseenter', 'focus'],
     hideEvents: ['mouseleave', 'blur'],
     classList: {
-      tooltip: "bg-gray-600 text-white rounded w-max px-2 py-1 z-10 block",
-      arrow: "bg-gray-600 transform-gpu rotate-45 w-2 h-2"
+      tooltip: 'bg-gray-600 text-white rounded w-max px-2 py-1 z-10 block',
+      arrow: 'bg-gray-600 transform-gpu rotate-45 w-2 h-2',
     },
     option: {
-      strategy: "fixed",
-      placement: "bottom"
-    }
+      strategy: 'fixed',
+      placement: 'bottom',
+    },
   };
   @State() _config: CdpTooltipConfig;
   @Prop({ mutable: true }) props: CdpTooltipProps = { display: false };
-  tooltipEl: HTMLElement
+  _props: CdpTooltipProps;
+  tooltipEl: HTMLElement;
   popperInstance: Instance;
   componentWillLoad() {
     this._config = deepAssign(this.config, this.defaultConfig);
@@ -35,25 +35,39 @@ export class CdpTooltip {
   }
   componentDidLoad() {
     const { showEvents, hideEvents } = this._config;
-    showEvents.forEach(event => { this.rootEl.addEventListener(event, this.show) })
-    hideEvents.forEach(event => { this.rootEl.addEventListener(event, this.hide) })
+    showEvents.forEach(event => {
+      this.rootEl.addEventListener(event, this.show);
+    });
+    hideEvents.forEach(event => {
+      this.rootEl.addEventListener(event, this.hide);
+    });
   }
   componentDidUpdate() {
-    if (this.popperInstance)
-      this.popperInstance.update()
+    if (this.popperInstance) this.popperInstance.update();
   }
   async show() {
-    this.props = { ...this.props, display: true }
-    this.popperInstance = createPopper(this.rootEl, this.tooltipEl, this._config.option)
+    this._props.display = true;
+    this.popperInstance = createPopper(this.rootEl, this.tooltipEl, this._config.option);
   }
   async hide() {
-    this.props = { ...this.props, display: false }
-    this.popperInstance ? this.popperInstance.destroy() : this.popperInstance = null;
+    this._props.display = false;
+    this.popperInstance ? this.popperInstance.destroy() : (this.popperInstance = null);
   }
   disconnectedCallback() {
     const { showEvents, hideEvents } = this._config;
-    showEvents.forEach(event => { this.rootEl.removeEventListener(event, this.show) })
-    hideEvents.forEach(event => { this.rootEl.removeEventListener(event, this.hide) })
+    showEvents.forEach(event => {
+      this.rootEl.removeEventListener(event, this.show);
+    });
+    hideEvents.forEach(event => {
+      this.rootEl.removeEventListener(event, this.hide);
+    });
+  }
+  createProxy() {
+    const set = (target, prop, value, receiver) => {
+      this.props = { ...target, [prop]: value };
+      return Reflect.set(target, prop, value, receiver);
+    };
+    this._props = new Proxy(this.props, this._config.proxyHandler ?? { set });
   }
   render() {
     const { classList, arrow } = this._config;
@@ -61,13 +75,17 @@ export class CdpTooltip {
     return (
       <Host class="relative">
         <slot></slot>
-        <div ref={(el) => this.tooltipEl = el} class={tooltipClass}>
+        <div ref={el => (this.tooltipEl = el)} class={tooltipClass}>
           <slot name="tooltip"></slot>
-          {arrow ? <div id="arrow" data-popper-arrow>
-            <div class={classList.arrow}></div>
-          </div> : ""}
+          {arrow ? (
+            <div id="arrow" data-popper-arrow>
+              <div class={classList.arrow}></div>
+            </div>
+          ) : (
+            ''
+          )}
         </div>
-      </Host >
-    )
+      </Host>
+    );
   }
 }
