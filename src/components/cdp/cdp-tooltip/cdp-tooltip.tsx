@@ -1,6 +1,6 @@
 import { createPopper } from '@popperjs/core';
 import { Instance } from '@popperjs/core/lib/types';
-import { Component, Element, h, Host, Prop, State } from '@stencil/core';
+import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
 import { deepAssign } from '../../../utils/deep-assign';
 import { CdpTooltipConfig, CdpTooltipProps } from './cdp-tooltip.interface';
 
@@ -32,6 +32,7 @@ export class CdpTooltip {
     this._config = deepAssign(this.config, this.defaultConfig);
     this.show = this.show.bind(this);
     this.hide = this.hide.bind(this);
+    this.createProxy();
   }
   componentDidLoad() {
     const { showEvents, hideEvents } = this._config;
@@ -62,6 +63,10 @@ export class CdpTooltip {
       this.rootEl.removeEventListener(event, this.hide);
     });
   }
+  @Watch('props')
+  configChangeHandler() {
+    this.createProxy();
+  }
   createProxy() {
     const set = (target, prop, value, receiver) => {
       this.props = { ...target, [prop]: value };
@@ -81,9 +86,7 @@ export class CdpTooltip {
             <div id="arrow" data-popper-arrow>
               <div class={classList.arrow}></div>
             </div>
-          ) : (
-            ''
-          )}
+          ) : null}
         </div>
       </Host>
     );
