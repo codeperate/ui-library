@@ -42,8 +42,11 @@ export class CdpTooltip {
     hideEvents.forEach(event => {
       this.rootEl.addEventListener(event, this.hide);
     });
+    if (this.props.display) {
+      this.show();
+    }
   }
-  componentDidUpdate() {
+  componentDidRender() {
     if (this.popperInstance) this.popperInstance.update();
   }
   async show() {
