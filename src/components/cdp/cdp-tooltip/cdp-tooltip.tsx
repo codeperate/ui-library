@@ -43,7 +43,7 @@ export class CdpTooltip {
       this.rootEl.addEventListener(event, this.hide);
     });
     if (this.props.display) {
-      this.show();
+      this.popperInstance = createPopper(this.rootEl, this.tooltipEl, this._config.option);
     }
   }
   componentDidRender() {
