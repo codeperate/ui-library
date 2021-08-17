@@ -1,7 +1,7 @@
 import { Component, Element, h, Host, Prop, State } from '@stencil/core';
 import { deepAssign } from '../../../utils/deep-assign';
 import { CdpMenuListConfig, CdpMenuListProps } from './cdp-menu-list.interface';
-import { pathToRegexp } from 'path-to-regexp'
+import { pathToRegexp } from 'path-to-regexp';
 @Component({
   tag: 'cdp-menu-list',
 })
@@ -28,7 +28,7 @@ export class CdpMenuList {
   isActive(href: string, activePath: string) {
     const regex = pathToRegexp(href);
     if (activePath.match(regex)) return true;
-    return false
+    return false;
   }
   render() {
     const { classList, anchorPropsFn, menuItems } = this._config;
@@ -40,28 +40,34 @@ export class CdpMenuList {
           let expand = props['expand'];
           let active = isActive ? isActive(activePath) : this.isActive(href, activePath);
           if (props['nested'])
-            return <cdp-accordion props={{ display: expand ? expand : active }}>
-              <a slot="accordion" class={active ? classList.menuItemActive : classList.menuItem}>
-                {icon ? icon(active) : ''}
-                {name}
-                {indicator ? indicator(active) : ''}
-              </a>
-              <div class={classList.subMenuWrapper}>
-                {props['nested'].map(({ name, href, indicator, icon, isActive }) => {
-                  let active = isActive ? isActive(activePath) : this.isActive(href, activePath);
-                  return <a {...anchorPropsFn(href)} class={active ? classList.subMenuItemActive : classList.subMenuItem}>
-                    {icon ? icon(active) : ''}
-                    {name}
-                    {indicator ? indicator(active) : ''}
-                  </a>
-                })}
-              </div>
-            </cdp-accordion>
-          return <a {...anchorPropsFn(href)} class={active ? classList.menuItemActive : classList.menuItem}>
-            {icon ? icon(active) : ''}
-            {name}
-            {indicator ? indicator(active) : ''}
-          </a>
+            return (
+              <cdp-accordion props={{ display: expand ? expand : active }} config={{ toggle: false }}>
+                <a slot="accordion" class={active ? classList.menuItemActive : classList.menuItem} {...href(href)}>
+                  {icon ? icon(active) : ''}
+                  {name}
+                  {indicator ? indicator(active) : ''}
+                </a>
+                <div class={classList.subMenuWrapper}>
+                  {props['nested'].map(({ name, href, indicator, icon, isActive }) => {
+                    let active = isActive ? isActive(activePath) : this.isActive(href, activePath);
+                    return (
+                      <a {...anchorPropsFn(href)} class={active ? classList.subMenuItemActive : classList.subMenuItem}>
+                        {icon ? icon(active) : ''}
+                        {name}
+                        {indicator ? indicator(active) : ''}
+                      </a>
+                    );
+                  })}
+                </div>
+              </cdp-accordion>
+            );
+          return (
+            <a {...anchorPropsFn(href)} class={active ? classList.menuItemActive : classList.menuItem}>
+              {icon ? icon(active) : ''}
+              {name}
+              {indicator ? indicator(active) : ''}
+            </a>
+          );
         })}
       </Host>
     );
