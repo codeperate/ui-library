@@ -42,7 +42,7 @@ export class CdpMenuList {
           if (props['nested'])
             return (
               <cdp-accordion props={{ display: expand ? expand : active }} config={{ toggle: false }}>
-                <a slot="accordion" class={active ? classList.menuItemActive : classList.menuItem} {...href(href)}>
+                <a slot="accordion" class={active ? classList.menuItemActive : classList.menuItem} {...anchorPropsFn(href)}>
                   {icon ? icon(active) : ''}
                   {name}
                   {indicator ? indicator(active) : ''}
