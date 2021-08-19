@@ -1,6 +1,6 @@
 {
   "name": "@codeperate/cdp-ui-library",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "description": "Codeperate UI Library",
   "main": "dist/index.cjs.js",
   "module": "dist/custom-elements/index.js",
