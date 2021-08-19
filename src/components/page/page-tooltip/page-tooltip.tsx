@@ -5,11 +5,13 @@ import { CdpModalProps } from '../../cdp/cdp-modal/cdp-modal.interface';
 })
 export class PageTooltip {
   @State() props: CdpModalProps;
+  @State() display = true;
+
   render() {
     return (
       <Host class="">
         <h1>Preview</h1>
-        <cdp-tooltip class="place-self-start" config={{ arrow: true }} props={{ display: true }}>
+        <cdp-tooltip class="place-self-start" config={{ arrow: true }} props={{ display: this.display }}>
           <button>Hover me</button>
           <div slot="tooltip">Hi!</div>
         </cdp-tooltip>

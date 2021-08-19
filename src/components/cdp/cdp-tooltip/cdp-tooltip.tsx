@@ -51,11 +51,10 @@ export class CdpTooltip {
   }
   async show() {
     this._props.display = true;
-    this.popperInstance = createPopper(this.rootEl, this.tooltipEl, this._config.option);
+    //this.popperInstance = createPopper(this.rootEl, this.tooltipEl, this._config.option);
   }
   async hide() {
     this._props.display = false;
-    this.popperInstance ? this.popperInstance.destroy() : (this.popperInstance = null);
   }
   disconnectedCallback() {
     const { showEvents, hideEvents } = this._config;
@@ -68,7 +67,9 @@ export class CdpTooltip {
   }
   @Watch('props')
   configChangeHandler() {
-    this.createProxy();
+    //this.createProxy();
+    if (this.props.display) this.popperInstance = createPopper(this.rootEl, this.tooltipEl, this._config.option);
+    else if (this.props.display) this.popperInstance ? this.popperInstance.destroy() : (this.popperInstance = null);
   }
   createProxy() {
     const set = (target, prop, value, receiver) => {
