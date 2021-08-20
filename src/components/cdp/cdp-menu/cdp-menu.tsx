@@ -1,4 +1,4 @@
-import { Component, Element, h, Host, Listen, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Host, Listen, Prop, State } from '@stencil/core';
 import { deepAssign } from '../../../utils/deep-assign';
 import { CdpMenuConfig, CdpMenuProps } from './cdp-menu.interface';
 
@@ -9,7 +9,7 @@ export class CdpMenu {
   @Element() rootEl: HTMLCdpMenuElement;
   containerEl: HTMLDivElement;
   @Prop() config: CdpMenuConfig;
-  @State() _config: CdpMenuConfig;
+  @State() _config: CdpMenuConfig = {};
   defaultConfig: CdpMenuConfig = {
     sensitivity: 0.5,
     background: true,
@@ -22,7 +22,7 @@ export class CdpMenu {
   @Prop({ mutable: true }) props: CdpMenuProps = {
     display: false,
   };
-  _props: CdpMenuProps
+  _props: CdpMenuProps;
   initXPos: number;
   finalXPos: number;
   offsetX: number;
@@ -44,15 +44,7 @@ export class CdpMenu {
       this.open();
     }
   }
-  @Watch('props')
-  configChangeHandler(n: CdpMenuProps) {
-    this.createProxy();
-    if (n.display) {
-      this.translateX = 100;
-      this.setTranslateX()
-    }
-    if (!n.display) this.removeTranslateX()
-  }
+
   open() {
     this._props.display = true;
   }
@@ -82,18 +74,18 @@ export class CdpMenu {
   }
   createProxy() {
     const set = (target, prop, value, receiver) => {
-      this.props = { ...target, [prop]: value }
+      this.props = { ...target, [prop]: value };
       return Reflect.set(target, prop, value, receiver);
-    }
-    this._props = new Proxy(this.props, this._config.proxyHandler ?? { set })
+    };
+    this._props = new Proxy(this.props, this._config.proxyHandler ?? { set });
   }
   render() {
     const { classList, width, background } = this._config;
     const { display } = this._props;
     return (
       <Host class={`${classList.host}`}>
-        {display && background ? <div class={`${classList.background}`} onClick={() => this.close()}></div> : ""}
-        <div ref={(el) => (this.containerEl = el)} class={`${classList.container}`} style={width ? { width: width } : {}}>
+        {display && background ? <div class={`${classList.background}`} onClick={() => this.close()}></div> : ''}
+        <div ref={el => (this.containerEl = el)} class={`${classList.container}`} style={width ? { width: width } : {}}>
           <slot></slot>
         </div>
       </Host>

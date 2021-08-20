@@ -23,7 +23,7 @@ export class CdpTooltip {
       placement: 'bottom',
     },
   };
-  @State() _config: CdpTooltipConfig;
+  @State() _config: CdpTooltipConfig = {};
   @Prop({ mutable: true }) props: CdpTooltipProps = { display: false };
   _props: CdpTooltipProps;
   tooltipEl: HTMLElement;
