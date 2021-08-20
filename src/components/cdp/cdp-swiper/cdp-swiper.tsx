@@ -1,21 +1,21 @@
-import { Component, Element, h, Host, Prop, Watch } from '@stencil/core';
+import { Component, Element, h, Host, Method, Prop, Watch } from '@stencil/core';
 import Swiper from 'swiper/bundle';
 import { deepAssign } from '../../../utils/deep-assign';
 import { CdpSwiperConfig, CdpSwiperProps } from './cdp-swiper.interface';
 @Component({
   tag: 'cdp-swiper',
-  styleUrl: 'cdp-swiper.css'
+  styleUrl: 'cdp-swiper.css',
 })
 export class CdpSwiper {
   @Element() rootEl: HTMLCdpSwiperElement;
   @Prop() config: CdpSwiperConfig;
   @Prop() props: CdpSwiperProps;
-  _config: CdpSwiperConfig
+  _config: CdpSwiperConfig;
   defaultConfig: CdpSwiperConfig = {
     classList: {
-      host: "swiper-container block"
-    }
-  }
+      host: 'swiper-container block',
+    },
+  };
   swiper: Swiper;
 
   componentWillLoad() {
@@ -24,14 +24,20 @@ export class CdpSwiper {
   componentDidLoad() {
     this.swiper = new Swiper(this.rootEl, this._config.option);
   }
+  @Method()
+  async getSwiper() {
+    return this.swiper;
+  }
   @Watch('props')
   propsHandler(n: CdpSwiperProps, o: CdpSwiperProps) {
-    if (n.slideTo != o.slideTo) this.swiper.slideTo(n.slideTo)
+    if (n.slideTo != o.slideTo) this.swiper.slideTo(n.slideTo);
   }
   render() {
-    const { classList } = this._config
-    return <Host class={classList.host}>
-      <slot></slot>
-    </Host>
+    const { classList } = this._config;
+    return (
+      <Host class={classList.host}>
+        <slot></slot>
+      </Host>
+    );
   }
 }

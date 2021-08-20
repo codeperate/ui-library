@@ -30,6 +30,7 @@ export namespace Components {
     }
     interface CdpSwiper {
         "config": CdpSwiperConfig;
+        "getSwiper": () => Promise<Swiper>;
         "props": CdpSwiperProps;
     }
     interface CdpTooltip {
