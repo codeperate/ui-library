@@ -1,4 +1,4 @@
-import { Component, Element, h, Host, Listen, Prop, State,Watch } from '@stencil/core';
+import { Component, Element, h, Host, Listen, Prop, State, Watch, Build } from '@stencil/core';
 import { deepAssign } from '../../../utils/deep-assign';
 import { CdpMenuConfig, CdpMenuProps } from './cdp-menu.interface';
 
@@ -31,6 +31,12 @@ export class CdpMenu {
   @Listen('touchstart', { target: 'window', passive: false })
   touchDownHandler(e: TouchEvent) {
     if (this.containerEl.contains(e.target as HTMLElement)) return;
+    if (Build.isBrowser) {
+      const transform = getComputedStyle(this.containerEl).transform;
+      const matrix = new WebKitCSSMatrix(transform);
+      if (matrix.m41 >= 0)
+        return; 
+    }
     this.initXPos = e.touches[0].clientX;
     addEventListener('touchmove', this.moveHandler, { passive: false });
   }
@@ -83,9 +89,9 @@ export class CdpMenu {
   configChangeHandler(n: CdpMenuProps) {
     if (n.display) {
       this.translateX = 100;
-      this.setTranslateX()
+      this.setTranslateX();
     }
-    if (!n.display) this.removeTranslateX()
+    if (!n.display) this.removeTranslateX();
   }
   render() {
     const { classList, width, background } = this._config;

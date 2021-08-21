@@ -1,4 +1,4 @@
-import { Component, Element, h, Host, Method, Prop, Watch } from '@stencil/core';
+import { Component, Element, h, Host, Method, Prop, Watch,Listen } from '@stencil/core';
 import SwiperClass from 'swiper/bundle';
 import { Swiper} from 'swiper';
 import { deepAssign } from '../../../utils/deep-assign';
@@ -16,6 +16,7 @@ export class CdpSwiper {
     classList: {
       host: 'swiper-container block',
     },
+    stopPropagation:true
   };
   swiper: Swiper;
 
@@ -33,6 +34,14 @@ export class CdpSwiper {
   propsHandler(n: CdpSwiperProps, o: CdpSwiperProps) {
     if (n.slideTo != o.slideTo) this.swiper.slideTo(n.slideTo);
   }
+  @Listen('touchstart',{passive:false})
+  touchStartHandler(e:TouchEvent){
+    if(this._config.stopPropagation){
+      e.preventDefault()
+      e.stopPropagation();
+    }
+  }
+
   render() {
     const { classList } = this._config;
     return (

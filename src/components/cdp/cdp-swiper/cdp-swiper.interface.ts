@@ -4,6 +4,7 @@ export interface CdpSwiperConfig {
   classList?: {
     host?: string;
   };
+  stopPropagation?:boolean;
 }
 export interface CdpSwiperProps {
   slideTo?: number;
