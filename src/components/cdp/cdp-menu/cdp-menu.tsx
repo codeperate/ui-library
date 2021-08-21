@@ -89,7 +89,7 @@ export class CdpMenu {
   }
   render() {
     const { classList, width, background } = this._config;
-    const { display } = this._props;
+    const { display } = this.props;
     return (
       <Host class={`${classList.host}`}>
         {display && background ? <div class={`${classList.background}`} onClick={() => this.close()}></div> : ''}
