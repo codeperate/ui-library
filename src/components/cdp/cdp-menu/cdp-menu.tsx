@@ -1,4 +1,4 @@
-import { Component, Element, h, Host, Listen, Prop, State } from '@stencil/core';
+import { Component, Element, h, Host, Listen, Prop, State,Watch } from '@stencil/core';
 import { deepAssign } from '../../../utils/deep-assign';
 import { CdpMenuConfig, CdpMenuProps } from './cdp-menu.interface';
 
@@ -78,6 +78,14 @@ export class CdpMenu {
       return Reflect.set(target, prop, value, receiver);
     };
     this._props = new Proxy(this.props, this._config.proxyHandler ?? { set });
+  }
+  @Watch('props')
+  configChangeHandler(n: CdpMenuProps) {
+    if (n.display) {
+      this.translateX = 100;
+      this.setTranslateX()
+    }
+    if (!n.display) this.removeTranslateX()
   }
   render() {
     const { classList, width, background } = this._config;

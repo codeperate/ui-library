@@ -12,7 +12,7 @@ specifiers:
   np: ^7.5.0
   path-to-regexp: ^6.2.0
   stencil-router-v2: ^0.6.0
-  swiper: ^6.7.0
+  swiper: ^6.8.3
   typedoc: ^0.20.36
   typedoc-plugin-markdown: ^3.9.0
   typedoc-plugin-merge-modules: ^2.1.1
@@ -27,7 +27,7 @@ dependencies:
   marked: 2.0.7
   path-to-regexp: 6.2.0
   stencil-router-v2: 0.6.0_@stencil+core@2.6.0
-  swiper: 6.7.0
+  swiper: 6.8.3
   windicss: 3.1.3
 
 devDependencies:
@@ -2346,8 +2346,8 @@ packages:
       supports-color: 7.2.0
     dev: true
 
-  /swiper/6.7.0:
-    resolution: {integrity: sha512-zCfvWn7H7mCq7jgVurckhAwkjPUeMCkdC4rA7lagvaD3mIrNhKiaYYo2+nkxMVpiaWuCQ38e44Mya/dKb7HpyQ==}
+  /swiper/6.8.3:
+    resolution: {integrity: sha512-1tpU2pqI/iUEfl2xg+7UBgwPQqTlFrm3Q9RKiphAAS+s0xUXRnHddAHifntTWAalcYR1AJwFUjv7hs0teyUYEw==}
     engines: {node: '>= 4.7.0'}
     requiresBuild: true
     dependencies:

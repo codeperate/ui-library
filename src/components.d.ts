@@ -10,6 +10,7 @@ import { CdpMenuConfig, CdpMenuProps } from "./components/cdp/cdp-menu/cdp-menu.
 import { CdpMenuListConfig, CdpMenuListProps } from "./components/cdp/cdp-menu-list/cdp-menu-list.interface";
 import { CdpModalConfig, CdpModalProps } from "./components/cdp/cdp-modal/cdp-modal.interface";
 import { CdpSwiperConfig, CdpSwiperProps } from "./components/cdp/cdp-swiper/cdp-swiper.interface";
+import { Swiper } from "swiper";
 import { CdpTooltipConfig, CdpTooltipProps } from "./components/cdp/cdp-tooltip/cdp-tooltip.interface";
 export namespace Components {
     interface CdpAccordion {
