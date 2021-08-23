@@ -37,7 +37,6 @@ export class CdpSwiper {
   @Listen('touchstart',{passive:false})
   touchStartHandler(e:TouchEvent){
     if(this._config.stopPropagation){
-      e.preventDefault()
       e.stopPropagation();
     }
   }
