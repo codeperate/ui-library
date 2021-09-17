@@ -10,6 +10,9 @@ export const config: Config = {
       preflight: true,
     }),
   ],
+  nodeResolve: {
+    browser: true,
+  },
   outputTargets: [
     {
       type: 'www',

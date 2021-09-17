@@ -11,6 +11,9 @@ export const config: Config = {
     }),
   ],
   tsconfig: 'tsconfig.build.json',
+  nodeResolve: {
+    jsnext: true,
+  },
   outputTargets: [
     {
       type: 'dist',

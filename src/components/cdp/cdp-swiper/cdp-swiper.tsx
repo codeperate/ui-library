@@ -1,4 +1,5 @@
 import { Component, Element, h, Host, Method, Prop, Watch, Listen } from '@stencil/core';
+import SwiperClass from 'swiper/bundle';
 import { Swiper } from 'swiper';
 import { deepAssign } from '../../../utils/deep-assign';
 import { CdpSwiperConfig, CdpSwiperProps } from './cdp-swiper.interface';
@@ -23,7 +24,7 @@ export class CdpSwiper {
     this._config = deepAssign(this.config, this.defaultConfig);
   }
   componentDidLoad() {
-    this.swiper = new Swiper(this.rootEl, this._config.option);
+    this.swiper = new SwiperClass(this.rootEl, this._config.option);
   }
   @Method()
   async getSwiper(): Promise<Swiper> {
