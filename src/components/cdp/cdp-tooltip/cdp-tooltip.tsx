@@ -36,12 +36,14 @@ export class CdpTooltip {
   }
   componentDidLoad() {
     const { showEvents, hideEvents } = this._config;
-    showEvents.forEach(event => {
-      this.rootEl.addEventListener(event, this.show);
-    });
-    hideEvents.forEach(event => {
-      this.rootEl.addEventListener(event, this.hide);
-    });
+    if (showEvents)
+      showEvents.forEach(event => {
+        this.rootEl.addEventListener(event, this.show);
+      });
+    if (hideEvents)
+      hideEvents.forEach(event => {
+        this.rootEl.addEventListener(event, this.hide);
+      });
     if (this.props.display) {
       this.popperInstance = createPopper(this.rootEl, this.tooltipEl, this._config.option);
     }
