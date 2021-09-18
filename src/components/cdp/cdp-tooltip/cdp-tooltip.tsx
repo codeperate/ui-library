@@ -60,12 +60,14 @@ export class CdpTooltip {
   }
   disconnectedCallback() {
     const { showEvents, hideEvents } = this._config;
-    showEvents.forEach(event => {
-      this.rootEl.removeEventListener(event, this.show);
-    });
-    hideEvents.forEach(event => {
-      this.rootEl.removeEventListener(event, this.hide);
-    });
+    if (showEvents)
+      showEvents.forEach(event => {
+        this.rootEl.removeEventListener(event, this.show);
+      });
+    if (hideEvents)
+      hideEvents.forEach(event => {
+        this.rootEl.removeEventListener(event, this.hide);
+      });
   }
   @Watch('props')
   configChangeHandler() {
