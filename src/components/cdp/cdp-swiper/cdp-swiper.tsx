@@ -32,7 +32,9 @@ export class CdpSwiper {
   }
   @Watch('props')
   propsHandler(n: CdpSwiperProps, o: CdpSwiperProps) {
-    if (n.slideTo != o.slideTo) this.swiper.slideTo(n.slideTo);
+    if (n && o) {
+      if (n.slideTo != o.slideTo) this.swiper.slideTo(n.slideTo);
+    }
   }
   @Listen('touchstart', { passive: false })
   touchStartHandler(e: TouchEvent) {
